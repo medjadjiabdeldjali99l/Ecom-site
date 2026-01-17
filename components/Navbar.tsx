@@ -14,21 +14,21 @@ export default function Navbar() {
             </div>
             <div>
               <h1 className="text-2xl font-serif font-bold text-forest">
-                Premium Store
+                My Suerte
               </h1>
               <p className="text-xs text-gray-600">Livraison en Algérie</p>
             </div>
           </div>
 
           {/* Optional: Add navigation links here */}
-          <div className="hidden md:flex items-center gap-6">
+          {/* <div className="hidden md:flex items-center gap-6">
             <a href="#product" className="text-gray-700 hover:text-forest transition-colors">
               Produit
             </a>
             <a href="#order" className="text-gray-700 hover:text-forest transition-colors">
               Commander
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>

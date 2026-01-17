@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, Minus, Trash2, ShoppingCart, User, Phone, MapPin, Home, Building2 } from "lucide-react";
-import { WILAYAS, calculateTotalPrice } from "@/data/algeria-data";
+import { WILAYAS, calculateTotalPrice, BASE_PRODUCT_PRICE } from "@/data/algeria-data";
 import { CartItem, OrderFormData } from "@/types/types";
 
 interface OrderFormProps {
@@ -33,22 +33,14 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
     
     if (cartItems.length > 0) {
       const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-      productTotal = totalQuantity * 3500;
+      productTotal = totalQuantity * BASE_PRODUCT_PRICE;
     } else {
-      productTotal = 3500; // Default single item price
+      productTotal = BASE_PRODUCT_PRICE; // Default single item price
     }
 
     if (formData.wilaya) {
-      const deliveryPrice = calculateTotalPrice(formData.wilaya, formData.deliveryMethod) - 3500; // subtract base product price from helper
-      // Actually, the helper calculateTotalPrice includes the base price (3500)
-      // Let's look at calculateTotalPrice implementation again or just stick to simple logic:
-      // We should probably rely on helper for delivery price ONLY.
-      // But helper returns TOTAL.
-      
-      // Let's assume helper returns (3500 + delivery).
-      // So delivery = helper - 3500.
       const standardTotal = calculateTotalPrice(formData.wilaya, formData.deliveryMethod);
-      const deliveryCost = standardTotal - 3500;
+      const deliveryCost = standardTotal - BASE_PRODUCT_PRICE;
       
       setTotalPrice(productTotal + deliveryCost);
     } else {
@@ -57,13 +49,29 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
   }, [formData.wilaya, formData.deliveryMethod, cartItems]);
 
   const validateForm = (): boolean => {
-    // ... (same validation)
-    return true; // Simplified for brevity in replacement, will keep original logic
+    const newErrors: Partial<Record<keyof OrderFormData, string>> = {};
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Le nom complet est requis";
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Le numéro de téléphone est requis";
+    } else if (!/^(0)(5|6|7)[0-9]{8}$/.test(formData.phone.replace(/\s/g, ""))) {
+      newErrors.phone = "Format invalide (ex: 0555123456)";
+    }
+
+    if (!formData.wilaya) {
+      newErrors.wilaya = "Veuillez sélectionner une wilaya";
+    }
+
+    if (!formData.commune) {
+      newErrors.commune = "Veuillez sélectionner une commune";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
-  
-  // (Keep original validation logic, I will just paste the top part to update signature and imports)
-  // Wait, I need to keep the validation logic. I shouldn't replace lines I don't provide.
-  // I will target specific blocks.
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,7 +80,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
 
     try {
       const selectedWilaya = WILAYAS.find((w) => w.code === formData.wilaya);
-      const basePrice = 3500;
+      const basePrice = BASE_PRODUCT_PRICE;
       
       // Calculate delivery cost
       const deliveryCost = formData.wilaya 
@@ -128,12 +136,6 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
     }
   };
 
-  // ... (rest of component, handleInputChange)
-
-  // RENDER PART
-  // I will replace the "Selected Model Display" block with "Cart Summary"
-
-
   const handleInputChange = (field: keyof OrderFormData, value: string) => {
     setFormData((prev) => {
       const updated = { ...prev, [field]: value };
@@ -165,7 +167,6 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
           </h2>
         </div>
 
-        {/* Selected Model Display */}
         {/* Cart Summary or Single Selection */}
         {cartItems.length > 0 ? (
           <div className="mb-6 space-y-3">
@@ -177,7 +178,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
                <div key={item.model} className="p-3 bg-cream/50 border border-gray-100 rounded-xl flex items-center justify-between">
                  <div className="flex-1">
                    <p className="font-bold text-gray-900 text-sm">{item.model}</p>
-                   <p className="text-xs text-forest font-medium">3,500 DZD</p>
+                   <p className="text-xs text-forest font-medium">{BASE_PRODUCT_PRICE.toLocaleString()} DZD</p>
                  </div>
                  
                  <div className="flex items-center gap-3 bg-white rounded-lg p-1 border border-gray-200 shadow-sm">

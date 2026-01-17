@@ -9,11 +9,11 @@ import { Plus, Minus, ShoppingBag } from "lucide-react";
 
 // Product images with models
 const PRODUCT_IMAGES: ProductImage[] = [
-  { url: "/1.jpg", model: "Modèle Blanc & Rose" },
-  { url: "/2.jpg", model: "Modèle Rouge" },
-  { url: "/3.jpg", model: "Modèle Noir" },
-  { url: "/4.jpg", model: "Modèle Beige" },
-  { url: "/5.jpg", model: "Modèle Beigeloooo" },
+  { url: "/1.jpg", model: "Modèle Rose & fleurs" },
+  { url: "/2.jpg", model: "Modèle Rose & noeud" },
+  { url: "/3.jpg", model: "Modèle Blanc & fleurs" },
+  { url: "/4.jpg", model: "Modèle Hello kitty" },
+  { url: "/5.jpg", model: "Modèle Stanley" },
 ];
 
 export default function Home() {
@@ -75,11 +75,68 @@ export default function Home() {
                 Description du Produit
               </h3>
               <div className="space-y-3 text-gray-700">
-                <p>
-                  Un produit de qualité supérieure conçu pour répondre à vos besoins.
-                  Fabriqué avec les meilleurs matériaux et une attention particulière
-                  aux détails.
-                </p>
+                <div className="space-y-8">
+                  {/* French Description */}
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-bold text-lg text-gray-900 flex items-center gap-2">
+                        <span className="text-2xl">🥤</span>
+                         Grande capacité : 1,2 L
+                      </h4>
+                      <p className="text-gray-600 text-sm italic ml-8">Parfait pour le sport, le bureau, les voyages, la randonnée</p>
+                    </div>
+                    
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">
+                          <span className="text-forest text-xs">✓</span>
+                        </div>
+                        <span><strong>Double paroi isotherme</strong> – conserve la chaleur et la fraîcheur jusqu’à 12h</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">
+                          <span className="text-forest text-xs">✓</span>
+                        </div>
+                        <span><strong>Acier inoxydable</strong> de haute qualité, robuste et élégant</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">
+                          <span className="text-forest text-xs">✓</span>
+                        </div>
+                        <span><strong>Bouchon étanche</strong> – aucune fuite</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="border-t border-gray-100"></div>
+
+                  {/* Arabic Description */}
+                  <div className="space-y-4 text-right" dir="rtl">
+                    <div>
+                      <h4 className="font-bold text-xl text-gray-900 mb-1">قنينة ماء حرارية 1200 مل 🥤</h4>
+                      <p className="text-forest font-medium">تحافظ على المشروبات ساخنة أو باردة طوال اليوم!</p>
+                    </div>
+                    
+                    <ul className="space-y-3">
+                      <li className="flex items-center gap-3">
+                        <span className="text-forest">✅</span>
+                        <span><strong>سعة كبيرة: 1.2 لتر</strong> (مثالية للرياضة، العمل، السفر، والرحلات)</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="text-forest">✅</span>
+                        <span><strong>جدار مزدوج عازل</strong> – يحافظ على الحرارة والبرودة حتى 12 ساعة</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                       <span className="text-forest">✅</span>
+                        <span><strong>مصنوعة من الفولاذ المقاوم للصدأ</strong> – متينة وأنيقة</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="text-forest">✅</span>
+                        <span><strong>غطاء محكم الإغلاق</strong> – بدون أي تسريب</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
                 
                 {/* Model Selection Indicator */}
                 <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
@@ -151,7 +208,7 @@ export default function Home() {
       <footer className="mt-20 bg-forest text-cream py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm">
-            © 2026 Premium Store. Tous droits réservés.
+            © 2026 My Suerte. Tous droits réservés.
           </p>
         </div>
       </footer>

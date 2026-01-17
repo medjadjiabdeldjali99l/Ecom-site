@@ -295,7 +295,7 @@ export const WILAYAS: Wilaya[] = [
 ];
 
 // Base product price (in DZD)
-export const BASE_PRODUCT_PRICE = 5000;
+export const BASE_PRODUCT_PRICE = Number(process.env.NEXT_PUBLIC_PRODUCT_PRICE) || 4500;
 
 // Delivery pricing per wilaya
 export const DELIVERY_PRICING: DeliveryPricing[] = [

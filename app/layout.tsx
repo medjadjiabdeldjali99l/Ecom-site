@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Premium Product - Livraison en Algérie",
+  title: "My Suerte",
   description: "Commandez votre produit premium avec livraison dans toute l'Algérie",
 };
 

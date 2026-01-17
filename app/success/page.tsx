@@ -112,7 +112,7 @@ export default function SuccessPage() {
           </button>
 
           <a
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/_my_suerte_"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"

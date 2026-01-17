@@ -4,10 +4,10 @@ import { UpdateOrderData } from '@/types/database.types'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params
+    const { id } = await params
     const supabase = createClient()
 
     const { data, error } = await supabase
@@ -36,10 +36,10 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params
+    const { id } = await params
     const body: UpdateOrderData = await request.json()
 
     const supabase = createClient()

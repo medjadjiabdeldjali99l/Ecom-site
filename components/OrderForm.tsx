@@ -135,7 +135,19 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
 
 
   const handleInputChange = (field: keyof OrderFormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData((prev) => {
+      const updated = { ...prev, [field]: value };
+      if (field === "wilaya") {
+        updated.commune = "";
+      }
+      return updated;
+    });
+
+    if (field === "wilaya") {
+      const selectedWilaya = WILAYAS.find((w) => w.code === value);
+      setAvailableCommunes(selectedWilaya?.communes || []);
+    }
+
     // Clear error for this field
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));

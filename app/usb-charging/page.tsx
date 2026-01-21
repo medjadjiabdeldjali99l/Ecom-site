@@ -98,7 +98,7 @@ export default function UsbChargingPage() {
                         <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">
                           <span className="text-forest text-xs">✓</span>
                         </div>
-                        <span><strong>Double paroi isotherme</strong> – conserve la chaleur et la fraîcheur jusqu'à 12h</span>
+                        <span><strong>Double paroi isotherme</strong> – conserve la chaleur et la fraîcheur jusqu&apos;à 12h</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">

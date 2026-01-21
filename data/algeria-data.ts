@@ -295,7 +295,16 @@ export const WILAYAS: Wilaya[] = [
 ];
 
 // Base product price (in DZD)
-export const BASE_PRODUCT_PRICE = Number(process.env.NEXT_PUBLIC_PRODUCT_PRICE) || 4500;
+export const BASE_PRODUCT_PRICE = Number(process.env.NEXT_PUBLIC_PRODUCT_PRICE) || 4900;
+
+// Individual product prices
+export const VACUUM_PRICE = Number(process.env.NEXT_PUBLIC_VACUUM_PRICE) || 3500;
+export const LABUBU_PRICE = Number(process.env.NEXT_PUBLIC_LABUBU_PRICE) || 4000;
+export const EPICES_PRICE = Number(process.env.NEXT_PUBLIC_EPICES_PRICE) || 1500;
+export const POTAGER_PRICE = Number(process.env.NEXT_PUBLIC_POTAGER_PRICE) || 2000;
+export const MAKEUP_PRICE = Number(process.env.NEXT_PUBLIC_MAKEUP_PRICE) || 3000;
+export const USB_CHARGING_PRICE = Number(process.env.NEXT_PUBLIC_USB_CHARGING_PRICE) || 2800;
+
 
 // Delivery pricing per wilaya
 export const DELIVERY_PRICING: DeliveryPricing[] = [

@@ -10,9 +10,10 @@ interface OrderFormProps {
   selectedModel?: string; // Kept for backward compatibility or direct selection if cart is empty
   cartItems?: CartItem[];
   onUpdateQuantity?: (model: string, delta: number) => void;
+  productPrice?: number; // Dynamic product price for this page
 }
 
-export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuantity }: OrderFormProps) {
+export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuantity, productPrice }: OrderFormProps) {
   const router = useRouter();
   const [formData, setFormData] = useState<OrderFormData>({
     fullName: "",
@@ -27,15 +28,18 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
   const [availableCommunes, setAvailableCommunes] = useState<string[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  // Use provided product price or fallback to BASE_PRODUCT_PRICE
+  const currentProductPrice = productPrice || BASE_PRODUCT_PRICE;
+
   // Calculate total price based on cart items or single selection
   useEffect(() => {
     let productTotal = 0;
     
     if (cartItems.length > 0) {
       const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-      productTotal = totalQuantity * BASE_PRODUCT_PRICE;
+      productTotal = totalQuantity * currentProductPrice;
     } else {
-      productTotal = BASE_PRODUCT_PRICE; // Default single item price
+      productTotal = currentProductPrice; // Default single item price
     }
 
     if (formData.wilaya) {
@@ -46,7 +50,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
     } else {
       setTotalPrice(productTotal);
     }
-  }, [formData.wilaya, formData.deliveryMethod, cartItems]);
+  }, [formData.wilaya, formData.deliveryMethod, cartItems, currentProductPrice]);
 
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof OrderFormData, string>> = {};
@@ -80,11 +84,11 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
 
     try {
       const selectedWilaya = WILAYAS.find((w) => w.code === formData.wilaya);
-      const basePrice = BASE_PRODUCT_PRICE;
+      const basePrice = currentProductPrice;
       
       // Calculate delivery cost
       const deliveryCost = formData.wilaya 
-        ? calculateTotalPrice(formData.wilaya, formData.deliveryMethod) - basePrice 
+        ? calculateTotalPrice(formData.wilaya, formData.deliveryMethod) - BASE_PRODUCT_PRICE 
         : 0;
 
       // Format product models string
@@ -178,7 +182,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
                <div key={item.model} className="p-3 bg-cream/50 border border-gray-100 rounded-xl flex items-center justify-between">
                  <div className="flex-1">
                    <p className="font-bold text-gray-900 text-sm">{item.model}</p>
-                   <p className="text-xs text-forest font-medium">{BASE_PRODUCT_PRICE.toLocaleString()} DZD</p>
+                   <p className="text-xs text-forest font-medium">{currentProductPrice.toLocaleString()} DZD</p>
                  </div>
                  
                  <div className="flex items-center gap-3 bg-white rounded-lg p-1 border border-gray-200 shadow-sm">

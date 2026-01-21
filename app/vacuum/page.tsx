@@ -7,18 +7,18 @@ import OrderForm from "@/components/OrderForm";
 import Toast from "@/components/Toast";
 import { ProductImage, CartItem } from "@/types/types";
 import { Plus, Minus, ShoppingBag } from "lucide-react";
-import { BASE_PRODUCT_PRICE } from "@/data/algeria-data";
+import { VACUUM_PRICE } from "@/data/algeria-data";
 
-// Product images with models
+// Product images with models - VACUUM PRODUCTS
 const PRODUCT_IMAGES: ProductImage[] = [
-  { url: "/1.jpg", model: "Modèle Rose & fleurs" },
-  { url: "/2.jpg", model: "Modèle Rose & noeud" },
-  { url: "/3.jpg", model: "Modèle Blanc & fleurs" },
-  { url: "/4.jpg", model: "Modèle Hello kitty" },
-  { url: "/5.jpg", model: "Modèle Stanley" },
+  { url: "/vacuum-1.jpg", model: "Modèle Vacuum Vert" },
+  { url: "/vacuum-2.jpg", model: "Modèle Vacuum Gris" },
+  { url: "/vacuum-3.jpg", model: "Modèle Vacuum Crevette" },
+  { url: "/vacuum-4.jpg", model: "Modèle Vacuum Bleu" },
+  { url: "/vacuum-5.jpg", model: "Modèle Vacuum Noire" },
 ];
 
-export default function Home() {
+export default function VacuumPage() {
   const [selectedModel, setSelectedModel] = useState(PRODUCT_IMAGES[0].model);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [toastVisible, setToastVisible] = useState(false);
@@ -82,71 +82,31 @@ export default function Home() {
                 Description du Produit
               </h3>
               <div className="space-y-3 text-gray-700">
-                <div className="space-y-8">
-                  {/* French Description */}
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-bold text-lg text-gray-900 flex items-center gap-2">
-                        <span className="text-2xl">🥤</span>
-                         Grande capacité : 1,2 L
-                      </h4>
-                      <p className="text-gray-600 text-sm italic ml-8">Parfait pour le sport, le bureau, les voyages, la randonnée</p>
-                    </div>
-                    
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-3">
-                        <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">
-                          <span className="text-forest text-xs">✓</span>
-                        </div>
-                        <span><strong>Double paroi isotherme</strong> – conserve la chaleur et la fraîcheur jusqu’à 12h</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">
-                          <span className="text-forest text-xs">✓</span>
-                        </div>
-                        <span><strong>Acier inoxydable</strong> de haute qualité, robuste et élégant</span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">
-                          <span className="text-forest text-xs">✓</span>
-                        </div>
-                        <span><strong>Bouchon étanche</strong> – aucune fuite</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="border-t border-gray-100"></div>
-
-                  {/* Arabic Description */}
-                  <div className="space-y-4 text-right" dir="rtl">
-                    <div>
-                      <h4 className="font-bold text-xl text-gray-900 mb-1">قنينة ماء حرارية 1200 مل 🥤</h4>
-                      <p className="text-forest font-medium">تحافظ على المشروبات ساخنة أو باردة طوال اليوم!</p>
-                    </div>
-                    
-                    <ul className="space-y-3">
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>سعة كبيرة: 1.2 لتر</strong> (مثالية للرياضة، العمل، السفر، والرحلات)</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>جدار مزدوج عازل</strong> – يحافظ على الحرارة والبرودة حتى 12 ساعة</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                       <span className="text-forest">✅</span>
-                        <span><strong>مصنوعة من الفولاذ المقاوم للصدأ</strong> – متينة وأنيقة</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>غطاء محكم الإغلاق</strong> – بدون أي تسريب</span>
-                      </li>
-                    </ul>
-                  </div>
+                {/* Arabic Description */}
+                <div className="space-y-4 text-right leading-relaxed" dir="rtl">
+                  <p className="text-lg font-semibold text-gray-900">
+                    استمتع بمشروباتك الساخنة والباردة في أي وقت وفي أي مكان!
+                  </p>
+                  
+                  <p className="text-gray-700">
+                    هذا الطقم الحراري الأنيق هو الرفيق المثالي للسفر، المكتب، أو الرحلات. بفضل تقنية العزل المزدوج، يحافظ على حرارة مشروباتك لمدة تصل إلى 12 ساعة.
+                  </p>
+                  
+                  <ul className="space-y-2 text-gray-700">
+                    <li><strong>السعة:</strong> 500 مل.</li>
+                    <li><strong>المحتوى:</strong> قارورة حرارية + 3 أكواب تقديم.</li>
+                    <li><strong>المادة:</strong> فولاذ مقاوم للصدأ (Stainless Steel) عالي الجودة.</li>
+                    <li><strong>التصميم:</strong> عصري، متين، وسهل الحمل.</li>
+                    <li><strong>هدية مثالية:</strong> يأتي في علبة فاخرة تناسب جميع المناسبات.</li>
+                  </ul>
+                  
+                  <p className="text-forest font-semibold text-lg">
+                    اطلبه الآن واستمتع بمشروبك المفضل بالحرارة المثالية!
+                  </p>
                 </div>
                 
                 {/* Model Selection Indicator */}
-                <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
+                {/* <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
                    <div className="flex items-center justify-between">
                      <div>
                        <p className="font-medium text-forest">Modèle affiché :</p>
@@ -156,14 +116,14 @@ export default function Home() {
                    <p className="text-sm text-forest italic">
                      * Ce modèle a été ajouté à votre sélection.
                    </p>
-                </div>
+                </div> */}
 
-                <ul className="list-disc list-inside space-y-2 ml-2 mt-4 pt-4 border-t border-gray-100">
+                {/* <ul className="list-disc list-inside space-y-2 ml-2 mt-4 pt-4 border-t border-gray-100">
                   <li>Qualité premium garantie</li>
                   <li>Livraison rapide dans toute l&apos;Algérie</li>
                   <li>Service client disponible 7j/7</li>
                   <li>Garantie satisfaction</li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
@@ -173,7 +133,7 @@ export default function Home() {
             <OrderForm 
               cartItems={cartItems} 
               onUpdateQuantity={updateQuantity}
-              productPrice={BASE_PRODUCT_PRICE}
+              productPrice={VACUUM_PRICE}
             />
           </div>
         </div>

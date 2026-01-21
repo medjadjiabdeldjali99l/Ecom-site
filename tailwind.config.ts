@@ -24,6 +24,15 @@ export default {
         elegant: "0 10px 40px rgba(113, 131, 85, 0.1)",
         "elegant-lg": "0 20px 60px rgba(113, 131, 85, 0.15)",
       },
+      keyframes: {
+        "slide-up": {
+          "0%": { transform: "translateX(-50%) translateY(100%)", opacity: "0" },
+          "100%": { transform: "translateX(-50%) translateY(0)", opacity: "1" },
+        },
+      },
+      animation: {
+        "slide-up": "slide-up 0.3s ease-out",
+      },
     },
   },
   plugins: [],

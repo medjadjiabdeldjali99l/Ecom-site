@@ -7,18 +7,18 @@ import OrderForm from "@/components/OrderForm";
 import Toast from "@/components/Toast";
 import { ProductImage, CartItem } from "@/types/types";
 import { Plus, Minus, ShoppingBag } from "lucide-react";
-import { BASE_PRODUCT_PRICE } from "@/data/algeria-data";
+import { MAKEUP_PRICE } from "@/data/algeria-data";
 
-// Product images with models
+// Product images with models - MAKEUP PRODUCTS
 const PRODUCT_IMAGES: ProductImage[] = [
-  { url: "/1.jpg", model: "Modèle Rose & fleurs" },
-  { url: "/2.jpg", model: "Modèle Rose & noeud" },
-  { url: "/3.jpg", model: "Modèle Blanc & fleurs" },
-  { url: "/4.jpg", model: "Modèle Hello kitty" },
-  { url: "/5.jpg", model: "Modèle Stanley" },
+  { url: "/makeup-1.jpg", model: "Modèle Makeup 1" },
+  { url: "/makeup-2.jpg", model: "Modèle Makeup 2" },
+  { url: "/makeup-3.jpg", model: "Modèle Makeup 3" },
+  { url: "/makeup-4.jpg", model: "Modèle Makeup 4" },
+  { url: "/makeup-5.jpg", model: "Modèle Makeup 5" },
 ];
 
-export default function Home() {
+export default function MakeupPage() {
   const [selectedModel, setSelectedModel] = useState(PRODUCT_IMAGES[0].model);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [toastVisible, setToastVisible] = useState(false);
@@ -98,7 +98,7 @@ export default function Home() {
                         <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">
                           <span className="text-forest text-xs">✓</span>
                         </div>
-                        <span><strong>Double paroi isotherme</strong> – conserve la chaleur et la fraîcheur jusqu’à 12h</span>
+                        <span><strong>Double paroi isotherme</strong> – conserve la chaleur et la fraîcheur jusqu'à 12h</span>
                       </li>
                       <li className="flex items-start gap-3">
                         <div className="mt-1 min-w-5 h-5 bg-forest/10 rounded-full flex items-center justify-center">
@@ -173,7 +173,7 @@ export default function Home() {
             <OrderForm 
               cartItems={cartItems} 
               onUpdateQuantity={updateQuantity}
-              productPrice={BASE_PRODUCT_PRICE}
+              productPrice={MAKEUP_PRICE}
             />
           </div>
         </div>

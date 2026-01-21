@@ -11,9 +11,74 @@ interface OrderFormProps {
   cartItems?: CartItem[];
   onUpdateQuantity?: (model: string, delta: number) => void;
   productPrice?: number; // Dynamic product price for this page
+  lang?: "fr" | "ar"; // Language prop
 }
 
-export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuantity, productPrice }: OrderFormProps) {
+const TRANSLATIONS = {
+  fr: {
+    title: "Commander Maintenant",
+    cartTitle: "Votre Panier",
+    items: "articles",
+    selectedModel: "Modèle choisi",
+    selected: "Sélectionné",
+    fullName: "Nom Complet",
+    fullNamePlaceholder: "Entrez votre nom complet",
+    phone: "Numéro de Téléphone",
+    phonePlaceholder: "0555123456",
+    wilaya: "Wilaya",
+    wilayaPlaceholder: "Sélectionnez une wilaya",
+    commune: "Commune",
+    communePlaceholder: "Sélectionnez une commune",
+    communeWait: "Sélectionnez d'abord une wilaya",
+    deliveryMode: "Mode de Livraison",
+    home: "À Domicile",
+    bureau: "Au Bureau",
+    total: "Prix Total",
+    submit: "Confirmer la Commande",
+    processing: "Traitement en cours...",
+    errors: {
+      name: "Le nom complet est requis",
+      phone: "Le numéro de téléphone est requis",
+      phoneFormat: "Format invalide (ex: 0555123456)",
+      wilaya: "Veuillez sélectionner une wilaya",
+      commune: "Veuillez sélectionner une commune"
+    }
+  },
+  ar: {
+    title: "اطلب الآن",
+    cartTitle: "سلة المشتريات",
+    items: "منتجات",
+    selectedModel: "النوع المختار",
+    selected: "تم الاختيار",
+    fullName: "الاسم الكامل",
+    fullNamePlaceholder: "أدخل اسمك الكامل",
+    phone: "رقم الهاتف",
+    phonePlaceholder: "0555123456",
+    wilaya: "الولاية",
+    wilayaPlaceholder: "اختر الولاية",
+    commune: "البلدية",
+    communePlaceholder: "اختر البلدية",
+    communeWait: "يرجى اختيار الولاية أولاً",
+    deliveryMode: "طريقة التوصيل",
+    home: "توصيل للمنزل",
+    bureau: "استلام من المكتب",
+    total: "السعر الإجمالي",
+    submit: "تأكيد الطلب",
+    processing: "جاري المعالجة...",
+    errors: {
+      name: "يرجى إدخال الاسم الكامل",
+      phone: "يرجى إدخال رقم الهاتف",
+      phoneFormat: "رقم هاتف غير صحيح (مثال: 0555123456)",
+      wilaya: "يرجى اختيار الولاية",
+      commune: "يرجى اختيار البلدية"
+    }
+  }
+};
+
+export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuantity, productPrice, lang = "fr" }: OrderFormProps) {
+  const t = TRANSLATIONS[lang];
+  const isRTL = lang === "ar";
+
   const router = useRouter();
   const [formData, setFormData] = useState<OrderFormData>({
     fullName: "",
@@ -56,21 +121,21 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
     const newErrors: Partial<Record<keyof OrderFormData, string>> = {};
 
     if (!formData.fullName.trim()) {
-      newErrors.fullName = "Le nom complet est requis";
+      newErrors.fullName = t.errors.name;
     }
 
     if (!formData.phone.trim()) {
-      newErrors.phone = "Le numéro de téléphone est requis";
+      newErrors.phone = t.errors.phone;
     } else if (!/^(0)(5|6|7)[0-9]{8}$/.test(formData.phone.replace(/\s/g, ""))) {
-      newErrors.phone = "Format invalide (ex: 0555123456)";
+      newErrors.phone = t.errors.phoneFormat;
     }
 
     if (!formData.wilaya) {
-      newErrors.wilaya = "Veuillez sélectionner une wilaya";
+      newErrors.wilaya = t.errors.wilaya;
     }
 
     if (!formData.commune) {
-      newErrors.commune = "Veuillez sélectionner une commune";
+      newErrors.commune = t.errors.commune;
     }
 
     setErrors(newErrors);
@@ -161,13 +226,13 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
   };
 
   return (
-      <div className="bg-white p-6 rounded-2xl shadow-elegant-lg border border-gray-100">
+      <div className={`bg-white p-6 rounded-2xl shadow-elegant-lg border border-gray-100 ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 bg-forest/10 rounded-full flex items-center justify-center">
             <ShoppingCart className="w-5 h-5 text-forest" />
           </div>
           <h2 className="text-2xl font-serif font-bold text-forest">
-            Commander Maintenant
+            {t.title}
           </h2>
         </div>
 
@@ -175,8 +240,8 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         {cartItems.length > 0 ? (
           <div className="mb-6 space-y-3">
              <div className="flex items-center justify-between text-sm text-gray-500 mb-2">
-               <span className="font-medium">Votre Panier</span>
-               <span>{cartItems.reduce((acc, i) => acc + i.quantity, 0)} articles</span>
+               <span className="font-medium">{t.cartTitle}</span>
+               <span>{cartItems.reduce((acc, i) => acc + i.quantity, 0)} {t.items}</span>
              </div>
              {cartItems.map((item) => (
                <div key={item.model} className="p-3 bg-cream/50 border border-gray-100 rounded-xl flex items-center justify-between">
@@ -208,11 +273,11 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         ) : selectedModel && (
           <div className="mb-6 p-4 bg-cream/50 border border-forest/20 rounded-xl flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500 font-medium uppercase tracking-wide">Modèle choisi</p>
+              <p className="text-sm text-gray-500 font-medium uppercase tracking-wide">{t.selectedModel}</p>
               <p className="text-lg font-bold text-forest">{selectedModel}</p>
             </div>
             <span className="text-xs bg-forest text-white px-2 py-1 rounded-full">
-              Sélectionné
+              {t.selected}
             </span>
           </div>
         )}
@@ -221,8 +286,8 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         {/* Full Name */}
         <div>
           <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
-            <User className="inline w-4 h-4 mr-2" />
-            Nom Complet
+            <User className={`inline w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+            {t.fullName}
           </label>
           <input
             type="text"
@@ -234,7 +299,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
                 ? "border-red-500 focus:border-red-600"
                 : "border-gray-200 focus:border-forest"
             } focus:outline-none focus:ring-2 focus:ring-forest/20`}
-            placeholder="Entrez votre nom complet"
+            placeholder={t.fullNamePlaceholder}
           />
           {errors.fullName && (
             <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>
@@ -244,8 +309,8 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         {/* Phone Number */}
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-            <Phone className="inline w-4 h-4 mr-2" />
-            Numéro de Téléphone
+            <Phone className={`inline w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+            {t.phone}
           </label>
           <input
             type="tel"
@@ -256,8 +321,9 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
               errors.phone
                 ? "border-red-500 focus:border-red-600"
                 : "border-gray-200 focus:border-forest"
-            } focus:outline-none focus:ring-2 focus:ring-forest/20`}
-            placeholder="0555123456"
+            } focus:outline-none focus:ring-2 focus:ring-forest/20 text-left`}
+            placeholder={t.phonePlaceholder}
+            dir="ltr"
           />
           {errors.phone && (
             <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
@@ -267,8 +333,8 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         {/* Wilaya Selection */}
         <div>
           <label htmlFor="wilaya" className="block text-sm font-medium text-gray-700 mb-2">
-            <MapPin className="inline w-4 h-4 mr-2" />
-            Wilaya
+            <MapPin className={`inline w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+            {t.wilaya}
           </label>
           <select
             id="wilaya"
@@ -280,7 +346,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
                 : "border-gray-200 focus:border-forest"
             } focus:outline-none focus:ring-2 focus:ring-forest/20 bg-white`}
           >
-            <option value="">Sélectionnez une wilaya</option>
+            <option value="">{t.wilayaPlaceholder}</option>
             {WILAYAS.map((wilaya) => (
               <option key={wilaya.code} value={wilaya.code}>
                 {wilaya.code} - {wilaya.name}
@@ -295,8 +361,8 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         {/* Commune Selection */}
         <div>
           <label htmlFor="commune" className="block text-sm font-medium text-gray-700 mb-2">
-            <MapPin className="inline w-4 h-4 mr-2" />
-            Commune
+            <MapPin className={`inline w-4 h-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+            {t.commune}
           </label>
           <select
             id="commune"
@@ -311,8 +377,8 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
           >
             <option value="">
               {formData.wilaya
-                ? "Sélectionnez une commune"
-                : "Sélectionnez d'abord une wilaya"}
+                ? t.communePlaceholder
+                : t.communeWait}
             </option>
             {availableCommunes.map((commune) => (
               <option key={commune} value={commune}>
@@ -328,7 +394,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         {/* Delivery Method */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            Mode de Livraison
+            {t.deliveryMode}
           </label>
           <div className="grid grid-cols-2 gap-3">
             <button
@@ -341,7 +407,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
               }`}
             >
               <Home className="w-5 h-5" />
-              <span className="font-medium">À Domicile</span>
+              <span className="font-medium">{t.home}</span>
             </button>
             <button
               type="button"
@@ -353,7 +419,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
               }`}
             >
               <Building2 className="w-5 h-5" />
-              <span className="font-medium">Au Bureau</span>
+              <span className="font-medium">{t.bureau}</span>
             </button>
           </div>
         </div>
@@ -362,7 +428,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         {formData.wilaya && (
           <div className="bg-cream/50 rounded-lg p-4 border-2 border-forest/20">
             <div className="flex justify-between items-center text-lg">
-              <span className="font-medium text-gray-700">Prix Total:</span>
+              <span className="font-medium text-gray-700">{t.total}:</span>
               <span className="text-2xl font-serif font-bold text-forest">
                 {totalPrice.toLocaleString()} DZD
               </span>
@@ -379,12 +445,12 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
           {isSubmitting ? (
             <>
               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-              <span>Traitement en cours...</span>
+              <span>{t.processing}</span>
             </>
           ) : (
             <>
               <ShoppingCart className="w-5 h-5" />
-              <span>Confirmer la Commande</span>
+              <span>{t.submit}</span>
             </>
           )}
         </button>

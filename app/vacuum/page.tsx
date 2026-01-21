@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import ImageGallery from "@/components/ImageGallery";
 import OrderForm from "@/components/OrderForm";
 import Toast from "@/components/Toast";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ProductImage, CartItem } from "@/types/types";
 import { Plus, Minus, ShoppingBag } from "lucide-react";
 import { VACUUM_PRICE } from "@/data/algeria-data";
@@ -59,11 +60,11 @@ export default function VacuumPage() {
         {/* Hero Section */}
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-forest">
-            Produit Premium
+            طقم حافظة حرارة مع 3 أكواب
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          {/* <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Découvrez notre produit exclusif avec livraison dans toute l&apos;Algérie
-          </p>
+          </p> */}
         </div>
 
         {/* Main Content Grid */}
@@ -134,6 +135,7 @@ export default function VacuumPage() {
               cartItems={cartItems} 
               onUpdateQuantity={updateQuantity}
               productPrice={VACUUM_PRICE}
+              lang="ar"
             />
           </div>
         </div>
@@ -187,6 +189,8 @@ export default function VacuumPage() {
         isVisible={toastVisible}
         onClose={() => setToastVisible(false)}
       />
+
+      <MobileStickyCTA />
     </div>
   );
 }

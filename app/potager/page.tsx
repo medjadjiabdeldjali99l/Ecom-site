@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import ImageGallery from "@/components/ImageGallery";
 import OrderForm from "@/components/OrderForm";
 import Toast from "@/components/Toast";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ProductImage, CartItem } from "@/types/types";
 import { Plus, Minus, ShoppingBag } from "lucide-react";
 import { POTAGER_PRICE } from "@/data/algeria-data";
@@ -227,6 +228,8 @@ export default function PotagerPage() {
         isVisible={toastVisible}
         onClose={() => setToastVisible(false)}
       />
+
+      <MobileStickyCTA />
     </div>
   );
 }

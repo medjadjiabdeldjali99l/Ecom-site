@@ -33,6 +33,9 @@ const TRANSLATIONS = {
     deliveryMode: "Mode de Livraison",
     home: "À Domicile",
     bureau: "Au Bureau",
+    productPrice: "Prix du produit",
+    deliveryPrice: "Livraison",
+    deliveryWait: "En attente...",
     total: "Prix Total",
     submit: "Confirmer la Commande",
     processing: "Traitement en cours...",
@@ -62,6 +65,9 @@ const TRANSLATIONS = {
     deliveryMode: "طريقة التوصيل",
     home: "توصيل للمنزل",
     bureau: "استلام من المكتب",
+    productPrice: "سعر المنتج",
+    deliveryPrice: "سعر التوصيل",
+    deliveryWait: "في الانتظار...",
     total: "السعر الإجمالي",
     submit: "تأكيد الطلب",
     processing: "جاري المعالجة...",
@@ -425,16 +431,29 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         </div>
 
         {/* Price Display */}
-        {formData.wilaya && (
-          <div className="bg-cream/50 rounded-lg p-4 border-2 border-forest/20">
-            <div className="flex justify-between items-center text-lg">
-              <span className="font-medium text-gray-700">{t.total}:</span>
-              <span className="text-2xl font-serif font-bold text-forest">
-                {totalPrice.toLocaleString()} DZD
-              </span>
-            </div>
+        <div className="bg-cream/50 rounded-lg p-4 border-2 border-forest/20 space-y-3">
+          <div className="flex justify-between items-center text-gray-600">
+            <span>{t.productPrice}:</span>
+            <span className="font-medium">{(cartItems.length > 0 ? totalPrice - (formData.wilaya ? calculateTotalPrice(formData.wilaya, formData.deliveryMethod) - BASE_PRODUCT_PRICE : 0) : currentProductPrice).toLocaleString()} DZD</span>
           </div>
-        )}
+          
+          <div className="flex justify-between items-center text-gray-600">
+            <span>{t.deliveryPrice}:</span>
+            <span className="font-medium">
+              {formData.wilaya 
+                ? `${(calculateTotalPrice(formData.wilaya, formData.deliveryMethod) - BASE_PRODUCT_PRICE).toLocaleString()} DZD`
+                : t.deliveryWait
+              }
+            </span>
+          </div>
+
+          <div className="border-t border-gray-200 pt-2 flex justify-between items-center text-lg">
+            <span className="font-medium text-gray-700">{t.total}:</span>
+            <span className="text-2xl font-serif font-bold text-forest">
+              {totalPrice.toLocaleString()} DZD
+            </span>
+          </div>
+        </div>
 
         {/* Submit Button */}
         <button

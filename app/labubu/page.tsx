@@ -143,7 +143,7 @@ export default function LabubuPage() {
                       </li>
                       <li className="flex items-start gap-3">
                         <span className="text-forest mt-1">✅</span>
-                        <span><strong>عملية وسهلة الاستخدام:</strong> غطاء ذكي يفتح بضغطة واحدة مع "شفاطة" سيليكون صحية تجعل الشرب سهلاً ونظيفاً.</span>
+                        <span><strong>عملية وسهلة الاستخدام:</strong> غطاء ذكي يفتح بضغطة واحدة مع شفاطة سيليكون صحية تجعل الشرب سهلاً ونظيفاً.</span>
                       </li>
                       <li className="flex items-start gap-3">
                        <span className="text-forest mt-1">✅</span>

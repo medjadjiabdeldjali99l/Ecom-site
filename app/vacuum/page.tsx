@@ -7,7 +7,7 @@ import OrderForm from "@/components/OrderForm";
 import Toast from "@/components/Toast";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ProductImage, CartItem } from "@/types/types";
-import { Plus, Minus, ShoppingBag } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Star } from "lucide-react";
 import { VACUUM_PRICE } from "@/data/algeria-data";
 
 // Product images with models - VACUUM PRODUCTS
@@ -60,11 +60,23 @@ export default function VacuumPage() {
         {/* Hero Section */}
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-forest">
-            طقم حافظة حرارة مع 3 أكواب
+           تارموس حراري مع 3 كيسان اينوكس بسعة 500 مل
           </h1>
           {/* <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Découvrez notre produit exclusif avec livraison dans toute l&apos;Algérie
           </p> */}
+        </div>
+
+        {/* Price and Rating */}
+        <div className="flex items-center justify-center gap-6 mb-12 -mt-8">
+           <p className="text-4xl font-bold text-forest font-serif">
+             {VACUUM_PRICE} DA
+           </p>
+           <div className="flex items-center gap-1 text-yellow-400">
+             {[1, 2, 3, 4, 5].map((_, i) => (
+               <Star key={i} className="w-6 h-6 fill-current shadow-sm" />
+             ))}
+           </div>
         </div>
 
         {/* Main Content Grid */}
@@ -79,12 +91,15 @@ export default function VacuumPage() {
             
             {/* Product Description */}
             <div className="mt-8 bg-white rounded-xl p-6 shadow-elegant">
-              <h3 className="text-2xl font-serif font-bold text-forest mb-4">
+              {/* <h3 className="text-2xl font-serif font-bold text-forest mb-4">
                 Description du Produit
-              </h3>
+              </h3> */}
               <div className="space-y-3 text-gray-700">
                 {/* Arabic Description */}
                 <div className="space-y-4 text-right leading-relaxed" dir="rtl">
+                  <h3 className="text-2xl font-serif font-bold text-forest mb-4">
+                    وصف المنتج
+                  </h3>
                   <p className="text-lg font-semibold text-gray-900">
                     استمتع بمشروباتك الساخنة والباردة في أي وقت وفي أي مكان!
                   </p>

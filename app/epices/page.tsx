@@ -7,7 +7,7 @@ import OrderForm from "@/components/OrderForm";
 import Toast from "@/components/Toast";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ProductImage, CartItem } from "@/types/types";
-import { Plus, Minus, ShoppingBag } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Star } from "lucide-react";
 import { EPICES_PRICE } from "@/data/algeria-data";
 
 // Product images with models - EPICES PRODUCTS
@@ -15,8 +15,8 @@ const PRODUCT_IMAGES: ProductImage[] = [
   { url: "/epices-1.jpg", model: "Modèle Epices 1" },
   { url: "/epices-2.jpg", model: "Modèle Epices 2" },
   { url: "/epices-3.jpg", model: "Modèle Epices 3" },
-  { url: "/epices-4.jpg", model: "Modèle Epices 4" },
-  { url: "/epices-5.jpg", model: "Modèle Epices 5" },
+  // { url: "/epices-4.jpg", model: "Modèle Epices 4" },
+  // { url: "/epices-5.jpg", model: "Modèle Epices 5" },
 ];
 
 export default function EpicesPage() {
@@ -60,11 +60,23 @@ export default function EpicesPage() {
         {/* Hero Section */}
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-forest">
-            Produit Premium
+            طقم منظم توابل عمودي ✨ (6 في 1)
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Découvrez notre produit exclusif avec livraison dans toute l&apos;Algérie
+             تصميم عصري موفر للمساحة وشفاف
           </p>
+        </div>
+
+        {/* Price and Rating */}
+        <div className="flex items-center justify-center gap-6 mb-12 -mt-8">
+           <p className="text-4xl font-bold text-forest font-serif">
+             {EPICES_PRICE} DA
+           </p>
+           <div className="flex items-center gap-1 text-yellow-400">
+             {[1, 2, 3, 4, 5].map((_, i) => (
+               <Star key={i} className="w-6 h-6 fill-current shadow-sm" />
+             ))}
+           </div>
         </div>
 
         {/* Main Content Grid */}
@@ -79,13 +91,13 @@ export default function EpicesPage() {
             
             {/* Product Description */}
             <div className="mt-8 bg-white rounded-xl p-6 shadow-elegant">
-              <h3 className="text-2xl font-serif font-bold text-forest mb-4">
+              {/* <h3 className="text-2xl font-serif font-bold text-forest mb-4">
                 Description du Produit
-              </h3>
+              </h3> */}
               <div className="space-y-3 text-gray-700">
                 <div className="space-y-8">
                   {/* French Description */}
-                  <div className="space-y-4">
+                  {/* <div className="space-y-4">
                     <div>
                       <h4 className="font-bold text-lg text-gray-900 flex items-center gap-2">
                         <span className="text-2xl">🥤</span>
@@ -114,40 +126,48 @@ export default function EpicesPage() {
                         <span><strong>Bouchon étanche</strong> – aucune fuite</span>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
 
-                  <div className="border-t border-gray-100"></div>
+                  {/* <div className="border-t border-gray-100"></div> */}
 
                   {/* Arabic Description */}
                   <div className="space-y-4 text-right" dir="rtl">
+                    <h3 className="text-2xl font-serif font-bold text-forest mb-4">
+                      وصف المنتج
+                    </h3>
                     <div>
-                      <h4 className="font-bold text-xl text-gray-900 mb-1">قنينة ماء حرارية 1200 مل 🥤</h4>
-                      <p className="text-forest font-medium">تحافظ على المشروبات ساخنة أو باردة طوال اليوم!</p>
+                      <h4 className="font-bold text-xl text-gray-900 mb-1 leading-relaxed">طقم منظم التوابل العمودي ✨ (6 في 1)</h4>
+                      <p className="text-forest font-medium">رتب مطبخك بذكاء! وداعاً للفوضى مع هذا المنظم العصري الذي يجمع لك كل التوابل في مكان واحد وبشكل أنيق.</p>
                     </div>
-                    
-                    <ul className="space-y-3">
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>سعة كبيرة: 1.2 لتر</strong> (مثالية للرياضة، العمل، السفر، والرحلات)</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>جدار مزدوج عازل</strong> – يحافظ على الحرارة والبرودة حتى 12 ساعة</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                       <span className="text-forest">✅</span>
-                        <span><strong>مصنوعة من الفولاذ المقاوم للصدأ</strong> – متينة وأنيقة</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>غطاء محكم الإغلاق</strong> – بدون أي تسريب</span>
-                      </li>
-                    </ul>
+
+                    <div className="space-y-2">
+                      <p className="font-bold text-gray-800">لماذا تختار هذا المنظم؟</p>
+                      <ul className="space-y-3">
+                        <li className="flex items-start gap-3">
+                          <span className="text-forest">✅</span>
+                          <span><strong>توفير مساحة:</strong> تصميم عمودي ذكي لا يأخذ مكاناً على الرخام.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-forest">✅</span>
+                          <span><strong>شفافية تامة:</strong> رؤية واضحة للتوابل والكمية المتبقية بسهولة.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-forest">✅</span>
+                          <span><strong>نكهة طازجة:</strong> إغلاق محكم يحمي البهارات من الرطوبة والروائح.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-forest">✅</span>
+                          <span><strong>جودة عالية:</strong> مصنوع من الأكريليك المتين والآمن.</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <p className="text-forest font-bold pt-2">الخيار الأفضل لمطبخ منظم وعصري!</p>
                   </div>
                 </div>
                 
                 {/* Model Selection Indicator */}
-                <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
+                {/* <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
                    <div className="flex items-center justify-between">
                      <div>
                        <p className="font-medium text-forest">Modèle affiché :</p>
@@ -164,7 +184,7 @@ export default function EpicesPage() {
                   <li>Livraison rapide dans toute l&apos;Algérie</li>
                   <li>Service client disponible 7j/7</li>
                   <li>Garantie satisfaction</li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
@@ -175,6 +195,7 @@ export default function EpicesPage() {
               cartItems={cartItems} 
               onUpdateQuantity={updateQuantity}
               productPrice={EPICES_PRICE}
+              lang="ar"
             />
           </div>
         </div>

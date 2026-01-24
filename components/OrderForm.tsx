@@ -434,7 +434,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         <div className="bg-cream/50 rounded-lg p-4 border-2 border-forest/20 space-y-3">
           <div className="flex justify-between items-center text-gray-600">
             <span>{t.productPrice}:</span>
-            <span className="font-medium">{(cartItems.length > 0 ? totalPrice - (formData.wilaya ? calculateTotalPrice(formData.wilaya, formData.deliveryMethod) - BASE_PRODUCT_PRICE : 0) : currentProductPrice).toLocaleString()} DZD</span>
+            <span className="font-medium">{currentProductPrice.toLocaleString()} DZD</span>
           </div>
           
           <div className="flex justify-between items-center text-gray-600">

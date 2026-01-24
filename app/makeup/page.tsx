@@ -7,7 +7,7 @@ import OrderForm from "@/components/OrderForm";
 import Toast from "@/components/Toast";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ProductImage, CartItem } from "@/types/types";
-import { Plus, Minus, ShoppingBag } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Star } from "lucide-react";
 import { MAKEUP_PRICE } from "@/data/algeria-data";
 
 // Product images with models - MAKEUP PRODUCTS
@@ -60,11 +60,23 @@ export default function MakeupPage() {
         {/* Hero Section */}
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-forest">
-            Produit Premium
+            منظف فرش المكياج الكهربائي الذكي ✨ (وداعاً للتعب!)
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Découvrez notre produit exclusif avec livraison dans toute l&apos;Algérie
+            لفرش نظيفة وصحية في ثوانٍ
           </p>
+        </div>
+
+        {/* Price and Rating */}
+        <div className="flex items-center justify-center gap-6 mb-12 -mt-8">
+           <p className="text-4xl font-bold text-forest font-serif">
+             {MAKEUP_PRICE} DA
+           </p>
+           <div className="flex items-center gap-1 text-yellow-400">
+             {[1, 2, 3, 4, 5].map((_, i) => (
+               <Star key={i} className="w-6 h-6 fill-current shadow-sm" />
+             ))}
+           </div>
         </div>
 
         {/* Main Content Grid */}
@@ -79,13 +91,13 @@ export default function MakeupPage() {
             
             {/* Product Description */}
             <div className="mt-8 bg-white rounded-xl p-6 shadow-elegant">
-              <h3 className="text-2xl font-serif font-bold text-forest mb-4">
+              {/* <h3 className="text-2xl font-serif font-bold text-forest mb-4">
                 Description du Produit
-              </h3>
+              </h3> */}
               <div className="space-y-3 text-gray-700">
                 <div className="space-y-8">
                   {/* French Description */}
-                  <div className="space-y-4">
+                  {/* <div className="space-y-4">
                     <div>
                       <h4 className="font-bold text-lg text-gray-900 flex items-center gap-2">
                         <span className="text-2xl">🥤</span>
@@ -114,40 +126,51 @@ export default function MakeupPage() {
                         <span><strong>Bouchon étanche</strong> – aucune fuite</span>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
 
-                  <div className="border-t border-gray-100"></div>
+                  {/* <div className="border-t border-gray-100"></div> */}
 
                   {/* Arabic Description */}
                   <div className="space-y-4 text-right" dir="rtl">
+                    <h3 className="text-2xl font-serif font-bold text-forest mb-4">
+                      وصف المنتج
+                    </h3>
                     <div>
-                      <h4 className="font-bold text-xl text-gray-900 mb-1">قنينة ماء حرارية 1200 مل 🥤</h4>
-                      <p className="text-forest font-medium">تحافظ على المشروبات ساخنة أو باردة طوال اليوم!</p>
+                      <p className="text-forest font-medium leading-relaxed">بشرة صحية تبدأ بفرش نظيفة! وفري وقتك وجهدك مع هذا الجهاز المبتكر الذي ينظف ويجفف فرش المكياج الخاصة بكِ بضغطة زر واحدة.</p>
                     </div>
-                    
-                    <ul className="space-y-3">
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>سعة كبيرة: 1.2 لتر</strong> (مثالية للرياضة، العمل، السفر، والرحلات)</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>جدار مزدوج عازل</strong> – يحافظ على الحرارة والبرودة حتى 12 ساعة</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                       <span className="text-forest">✅</span>
-                        <span><strong>مصنوعة من الفولاذ المقاوم للصدأ</strong> – متينة وأنيقة</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>غطاء محكم الإغلاق</strong> – بدون أي تسريب</span>
-                      </li>
-                    </ul>
+
+                    <div className="space-y-2">
+                      <p className="font-bold text-gray-800">لماذا تحتاجين هذا الجهاز؟</p>
+                      <ul className="space-y-3">
+                        <li className="flex items-start gap-3">
+                          <span className="text-forest">✅</span>
+                          <span><strong>تنظيف عميق وسريع:</strong> يزيل بقايا المكياج والبكتيريا والزيوت في ثوانٍ معدودة.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-forest">✅</span>
+                          <span><strong>مناسب للكل:</strong> فتحات علوية متعددة لتنظيف عدة فرش بأحجام مختلفة في وقت واحد.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-forest">✅</span>
+                          <span><strong>سهل الاستخدام:</strong> يعمل بوصلة USB مع زر تشغيل يعمل باللمس.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-forest">✅</span>
+                          <span><strong>تصميم 2 في 1:</strong> يعمل كمنظف قوي وحامل أنيق لتجفيف وتخزين الفرش.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-forest">✅</span>
+                          <span><strong>عصري وأنيق:</strong> مزود بإضاءة داخلية وهيكل شفاف لمتابعة عملية التنظيف.</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <p className="text-forest font-bold pt-2">حافظي على جمالك ونظافة أدواتك باحترافية!</p>
                   </div>
                 </div>
                 
                 {/* Model Selection Indicator */}
-                <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
+                {/* <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
                    <div className="flex items-center justify-between">
                      <div>
                        <p className="font-medium text-forest">Modèle affiché :</p>
@@ -164,7 +187,7 @@ export default function MakeupPage() {
                   <li>Livraison rapide dans toute l&apos;Algérie</li>
                   <li>Service client disponible 7j/7</li>
                   <li>Garantie satisfaction</li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
@@ -175,6 +198,7 @@ export default function MakeupPage() {
               cartItems={cartItems} 
               onUpdateQuantity={updateQuantity}
               productPrice={MAKEUP_PRICE}
+              lang="ar"
             />
           </div>
         </div>

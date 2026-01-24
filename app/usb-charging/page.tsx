@@ -7,7 +7,7 @@ import OrderForm from "@/components/OrderForm";
 import Toast from "@/components/Toast";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ProductImage, CartItem } from "@/types/types";
-import { Plus, Minus, ShoppingBag } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Star } from "lucide-react";
 import { USB_CHARGING_PRICE } from "@/data/algeria-data";
 
 // Product images with models - USB CHARGING PRODUCTS
@@ -65,6 +65,18 @@ export default function UsbChargingPage() {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Découvrez notre produit exclusif avec livraison dans toute l&apos;Algérie
           </p>
+        </div>
+
+        {/* Price and Rating */}
+        <div className="flex items-center justify-center gap-6 mb-12 -mt-8">
+           <p className="text-4xl font-bold text-forest font-serif">
+             {USB_CHARGING_PRICE} DA
+           </p>
+           <div className="flex items-center gap-1 text-yellow-400">
+             {[1, 2, 3, 4, 5].map((_, i) => (
+               <Star key={i} className="w-6 h-6 fill-current shadow-sm" />
+             ))}
+           </div>
         </div>
 
         {/* Main Content Grid */}

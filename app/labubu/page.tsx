@@ -7,7 +7,7 @@ import OrderForm from "@/components/OrderForm";
 import Toast from "@/components/Toast";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ProductImage, CartItem } from "@/types/types";
-import { Plus, Minus, ShoppingBag } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Star } from "lucide-react";
 import { LABUBU_PRICE } from "@/data/algeria-data";
 
 // Product images with models - LABUBU PRODUCTS
@@ -16,7 +16,6 @@ const PRODUCT_IMAGES: ProductImage[] = [
   { url: "/labubu-2.jpg", model: "Modèle Labubu 2" },
   { url: "/labubu-3.jpg", model: "Modèle Labubu 3" },
   { url: "/labubu-4.jpg", model: "Modèle Labubu 4" },
-  { url: "/labubu-5.jpg", model: "Modèle Labubu 5" },
 ];
 
 export default function LabubuPage() {
@@ -60,11 +59,23 @@ export default function LabubuPage() {
         {/* Hero Section */}
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-forest">
-            Produit Premium
+             كوب لابوبو الأرنب القطيفة 
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Découvrez notre produit exclusif avec livraison dans toute l&apos;Algérie
+            اجعل روتينك اليومي أكثر مرحاً مع رفيقك الجديد 'لابوبو'.. رفيقة مثالية لكل زمان ومكان
           </p>
+        </div>
+
+        {/* Price and Rating */}
+        <div className="flex items-center justify-center gap-6 mb-12 -mt-8">
+           <p className="text-4xl font-bold text-forest font-serif">
+             {LABUBU_PRICE} DA
+           </p>
+           <div className="flex items-center gap-1 text-yellow-400">
+             {[1, 2, 3, 4, 5].map((_, i) => (
+               <Star key={i} className="w-6 h-6 fill-current shadow-sm" />
+             ))}
+           </div>
         </div>
 
         {/* Main Content Grid */}
@@ -79,12 +90,10 @@ export default function LabubuPage() {
             
             {/* Product Description */}
             <div className="mt-8 bg-white rounded-xl p-6 shadow-elegant">
-              <h3 className="text-2xl font-serif font-bold text-forest mb-4">
-                Description du Produit
-              </h3>
+
               <div className="space-y-3 text-gray-700">
                 <div className="space-y-8">
-                  {/* French Description */}
+                  {/* French Description
                   <div className="space-y-4">
                     <div>
                       <h4 className="font-bold text-lg text-gray-900 flex items-center gap-2">
@@ -114,40 +123,42 @@ export default function LabubuPage() {
                         <span><strong>Bouchon étanche</strong> – aucune fuite</span>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
 
-                  <div className="border-t border-gray-100"></div>
+                  {/* <div className="border-t border-gray-100"></div> */}
 
                   {/* Arabic Description */}
                   <div className="space-y-4 text-right" dir="rtl">
+                    <h3 className="text-2xl font-serif font-bold text-forest mb-4">
+                      وصف المنتج
+                    </h3>
                     <div>
-                      <h4 className="font-bold text-xl text-gray-900 mb-1">قنينة ماء حرارية 1200 مل 🥤</h4>
-                      <p className="text-forest font-medium">تحافظ على المشروبات ساخنة أو باردة طوال اليوم!</p>
+                      <h4 className="font-bold text-xl text-gray-900 mb-1 leading-relaxed"><span className="text-2xl">🥤</span> كوب لابوبو الأرنب القطيفة المعزول ثنائي الاستخدام للمشروبات | المفضل لدى الأطفال 🐰</h4>
                     </div>
                     
                     <ul className="space-y-3">
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>سعة كبيرة: 1.2 لتر</strong> (مثالية للرياضة، العمل، السفر، والرحلات)</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-forest mt-1">✅</span>
+                        <span><strong>حافظة فرو فاخرة:</strong> تأتي مع حقيبة فرو ناعمة جداً للحماية، تعطي مظهراً شتوياً أنيقاً وتجعل حملها مريحاً.</span>
                       </li>
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>جدار مزدوج عازل</strong> – يحافظ على الحرارة والبرودة حتى 12 ساعة</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-forest mt-1">✅</span>
+                        <span><strong>عملية وسهلة الاستخدام:</strong> غطاء ذكي يفتح بضغطة واحدة مع "شفاطة" سيليكون صحية تجعل الشرب سهلاً ونظيفاً.</span>
                       </li>
-                      <li className="flex items-center gap-3">
-                       <span className="text-forest">✅</span>
-                        <span><strong>مصنوعة من الفولاذ المقاوم للصدأ</strong> – متينة وأنيقة</span>
+                      <li className="flex items-start gap-3">
+                       <span className="text-forest mt-1">✅</span>
+                        <span><strong>سهولة التنقل:</strong> مزودة بحزام كتف قابل للتعديل لترافقكم في المدرسة، النادي، أو الرحلات.</span>
                       </li>
-                      <li className="flex items-center gap-3">
-                        <span className="text-forest">✅</span>
-                        <span><strong>غطاء محكم الإغلاق</strong> – بدون أي تسريب</span>
+                      <li className="flex items-start gap-3">
+                        <span className="text-forest mt-1">✅</span>
+                        <span><strong>حفظ الحرارة:</strong> مصنوعة من الستانلس ستيل عالي الجودة للحفاظ على برودة أو سخونة المشروبات لفترة طويلة.</span>
                       </li>
                     </ul>
                   </div>
                 </div>
                 
                 {/* Model Selection Indicator */}
-                <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
+                {/* <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
                    <div className="flex items-center justify-between">
                      <div>
                        <p className="font-medium text-forest">Modèle affiché :</p>
@@ -164,7 +175,7 @@ export default function LabubuPage() {
                   <li>Livraison rapide dans toute l&apos;Algérie</li>
                   <li>Service client disponible 7j/7</li>
                   <li>Garantie satisfaction</li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
@@ -175,6 +186,7 @@ export default function LabubuPage() {
               cartItems={cartItems} 
               onUpdateQuantity={updateQuantity}
               productPrice={LABUBU_PRICE}
+              lang="ar"
             />
           </div>
         </div>

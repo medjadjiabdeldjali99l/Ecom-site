@@ -100,7 +100,7 @@ export default function IceRollerPage() {
                     Pourquoi avez-vous besoin du moule à glace dans votre routine ?
                   </p>
                   <p className="text-gray-700">
-                    Souffrez-vous de gonflements du visage au réveil ? Ou êtes-vous fatiguée des pores dilatés et du teint terne ? Ce moule n'est pas seulement un outil, c'est votre secret de beauté naturelle. Conçu pour vous offrir les bienfaits de la "cryothérapie" à domicile, il raffermit la peau, resserre les pores et donne à votre visage un éclat irrésistible.
+                    Souffrez-vous de gonflements du visage au réveil ? Ou êtes-vous fatiguée des pores dilatés et du teint terne ? Ce moule n&apos;est pas seulement un outil, c&apos;est votre secret de beauté naturelle. Conçu pour vous offrir les bienfaits de la &quotcryothérapie&quot à domicile, il raffermit la peau, resserre les pores et donne à votre visage un éclat irrésistible.
                   </p>
                   
                   <ul className="space-y-2 text-gray-700 list-disc list-inside">
@@ -121,7 +121,7 @@ export default function IceRollerPage() {
                   </p>
                   
                   <p className="text-gray-700">
-                    هل تعانين من انتفاخ الوجه عند الاستيقاظ؟ أو تعبتِ من المسام الواسعة والبشرة الشاحبة؟ هذا القالب ليس مجرد أداة، بل هو سر جمالك الطبيعي. مصمم ليمنحكِ فوائد "العلاج بالتبريد" (Cryotherapy) في منزلك، لشد الجلد، وتصغير المسام، وإعطاء وجهك إشراقة لا تقاوم.
+                    هل تعانين من انتفاخ الوجه عند الاستيقاظ؟ أو تعبتِ من المسام الواسعة والبشرة الشاحبة؟ هذا القالب ليس مجرد أداة، بل هو سر جمالك الطبيعي. مصمم ليمنحكِ فوائد &quotالعلاج بالتبريد&quot (Cryotherapy) في منزلك، لشد الجلد، وتصغير المسام، وإعطاء وجهك إشراقة لا تقاوم.
                   </p>
                   
                   <ul className="space-y-2 text-gray-700">

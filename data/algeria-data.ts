@@ -304,6 +304,9 @@ export const EPICES_PRICE = Number(process.env.NEXT_PUBLIC_EPICES_PRICE) || 1500
 export const POTAGER_PRICE = Number(process.env.NEXT_PUBLIC_POTAGER_PRICE) || 2000;
 export const MAKEUP_PRICE = Number(process.env.NEXT_PUBLIC_MAKEUP_PRICE) || 3000;
 export const USB_CHARGING_PRICE = Number(process.env.NEXT_PUBLIC_USB_CHARGING_PRICE) || 2800;
+export const ICE_ROLLER_PRICE = Number(process.env.NEXT_PUBLIC_ICE_ROLLER_PRICE) || 2500;
+export const DJADJO_PRICE = Number(process.env.NEXT_PUBLIC_DJADJO_PRICE) || 4500;
+
 
 
 // Delivery pricing per wilaya

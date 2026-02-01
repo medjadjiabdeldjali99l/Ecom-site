@@ -22,6 +22,27 @@ const PRODUCT_IMAGES: ProductImage[] = [
   { url: "/ice-roller-5.jpg", model: "Modèle Ice Roller Noire" },
 ];
 
+const ICE_ROLLER_VIDEOS = [
+  {
+    title: "العرض الأول: Hook 🎥",
+    description: "من وجه متعب وباهت إلى إشراقة فورية باستخدام الثلج. سحر في 5 ثوانٍ!",
+    videoUrl: "/video/IMG_7088.webm",
+    duration: "51s"
+  },
+  {
+    title: "طريقة الاستخدام: Tutorial 💡",
+    description: "افتحي القالب، مرريه بلطف، واستمتعي بالانتعاش. بسيط وفعال.",
+    videoUrl: "/video/IMG_7078.MP4",
+    duration: "47s"
+  },
+  // {
+  //   title: "آراء الملكات: Social Proof 👑",
+  //   description: "بنات من كل مكان جربوه وحبوه. انضمي لعائلة الجمال.",
+  //   videoUrl: "/video-social-placeholder.jpg",
+  //   duration: "10s"
+  // }
+];
+
 export default function IceRollerPage() {
   const [selectedModel, setSelectedModel] = useState(PRODUCT_IMAGES[0].model);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -151,7 +172,7 @@ export default function IceRollerPage() {
         </div>
 
         {/* Video Ideas Section */}
-        <VideoSales />
+        <VideoSales videos={ICE_ROLLER_VIDEOS} />
 
         {/* FAQ Section */}
         <FAQ />

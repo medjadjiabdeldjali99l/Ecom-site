@@ -15,11 +15,11 @@ import { ICE_ROLLER_PRICE } from "@/data/algeria-data";
 
 // Product images with models - ICE ROLLER PRODUCTS
 const PRODUCT_IMAGES: ProductImage[] = [
-  { url: "/ice-roller-1.jpg", model: "Modèle Ice Roller Vert" },
-  { url: "/ice-roller-2.jpg", model: "Modèle Ice Roller Gris" },
-  { url: "/ice-roller-3.jpg", model: "Modèle Ice Roller Crevette" },
-  { url: "/ice-roller-4.jpg", model: "Modèle Ice Roller Bleu" },
-  { url: "/ice-roller-5.jpg", model: "Modèle Ice Roller Noire" },
+  { url: "/ice-roller-1.jpg", model: "Modèle Vert 🟢" },
+  { url: "/ice-roller-2.jpg", model: "Modèle Bleu 🔵" },
+  { url: "/ice-roller-3.jpg", model: "Modèle Noire 🖤" },
+  { url: "/ice-roller-4.jpg", model: "Modèle Violet 🟣" },
+  { url: "/ice-roller-5.jpg", model: "Modèle Jaune 🟡" },
 ];
 
 const ICE_ROLLER_VIDEOS = [

@@ -12,6 +12,7 @@ interface OrderFormProps {
   onUpdateQuantity?: (model: string, delta: number) => void;
   productPrice?: number; // Dynamic product price for this page
   lang?: "fr" | "ar"; // Language prop
+  pointure?: string; // Selected shoe size (for products with sizes)
 }
 
 const TRANSLATIONS = {
@@ -20,6 +21,7 @@ const TRANSLATIONS = {
     cartTitle: "Votre Panier",
     items: "articles",
     selectedModel: "Modèle choisi",
+    selectedPointure: "Pointure choisie",
     selected: "Sélectionné",
     fullName: "Nom Complet",
     fullNamePlaceholder: "Entrez votre nom complet",
@@ -52,6 +54,7 @@ const TRANSLATIONS = {
     cartTitle: "سلة المشتريات",
     items: "منتجات",
     selectedModel: "النوع المختار",
+    selectedPointure: "المقاس المختار",
     selected: "تم الاختيار",
     fullName: "الاسم الكامل",
     fullNamePlaceholder: "أدخل اسمك الكامل",
@@ -81,7 +84,7 @@ const TRANSLATIONS = {
   }
 };
 
-export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuantity, productPrice, lang = "fr" }: OrderFormProps) {
+export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuantity, productPrice, lang = "fr", pointure }: OrderFormProps) {
   const t = TRANSLATIONS[lang];
   const isRTL = lang === "ar";
 
@@ -183,6 +186,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         product_price: totalPrice - deliveryCost,
         total_price: totalPrice,
         product_model: modelString,
+        pointure: pointure || undefined,
       };
 
       const response = await fetch('/api/orders', {
@@ -200,6 +204,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         totalPrice,
         wilaya: selectedWilaya?.name || formData.wilaya,
         productModel: modelString,
+        pointure: pointure || undefined,
       }));
 
       router.push('/success');
@@ -253,6 +258,9 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
                <div key={item.model} className="p-3 bg-cream/50 border border-gray-100 rounded-xl flex items-center justify-between">
                  <div className="flex-1">
                    <p className="font-bold text-gray-900 text-sm">{item.model}</p>
+                   {pointure && (
+                     <p className="text-xs text-gray-500">{t.selectedPointure}: <span className="font-semibold text-forest">{pointure}</span></p>
+                   )}
                    <p className="text-xs text-forest font-medium">{currentProductPrice.toLocaleString()} DZD</p>
                  </div>
                  
@@ -281,6 +289,9 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
             <div>
               <p className="text-sm text-gray-500 font-medium uppercase tracking-wide">{t.selectedModel}</p>
               <p className="text-lg font-bold text-forest">{selectedModel}</p>
+              {pointure && (
+                <p className="text-sm text-gray-500 mt-1">{t.selectedPointure}: <span className="font-semibold text-forest">{pointure}</span></p>
+              )}
             </div>
             <span className="text-xs bg-forest text-white px-2 py-1 rounded-full">
               {t.selected}

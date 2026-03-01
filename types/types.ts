@@ -21,6 +21,7 @@ export interface ProductImage {
 export interface CartItem {
   model: string;
   quantity: number;
+  pointure?: string;
 }
 
 // Order form data
@@ -31,4 +32,5 @@ export interface OrderFormData {
   commune: string;
   deliveryMethod: 'home' | 'bureau';
   productModel?: string;
+  pointure?: string;
 }

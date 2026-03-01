@@ -13,6 +13,7 @@ export interface Order {
   status: 'pending' | 'confirmed' | 'shipped' | 'delivered' | 'cancelled'
   admin_notes: string | null
   product_model?: string | null
+  pointure?: string | null
   updated_at: string
 }
 
@@ -27,6 +28,7 @@ export interface CreateOrderData {
   product_price: number
   total_price: number
   product_model?: string
+  pointure?: string
 }
 
 export interface UpdateOrderData {

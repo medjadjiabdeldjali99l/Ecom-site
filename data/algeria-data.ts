@@ -306,6 +306,7 @@ export const MAKEUP_PRICE = Number(process.env.NEXT_PUBLIC_MAKEUP_PRICE) || 3000
 export const USB_CHARGING_PRICE = Number(process.env.NEXT_PUBLIC_USB_CHARGING_PRICE) || 2800;
 export const ICE_ROLLER_PRICE = Number(process.env.NEXT_PUBLIC_ICE_ROLLER_PRICE) || 2500;
 export const DJADJO_PRICE = Number(process.env.NEXT_PUBLIC_DJADJO_PRICE) || 4500;
+export const HERMES_PRICE = Number(process.env.NEXT_PUBLIC_HERMES_PRICE) || 1800;
 
 
 

@@ -15,10 +15,10 @@ import { HERMES_PRICE } from "@/data/algeria-data";
 
 // Product images — 4 colorways
 const PRODUCT_IMAGES: ProductImage[] = [
-  { url: "/hermes-camel.jpg",  model: "Camel 🐪" },
-  { url: "/hermes-beige.jpg",  model: "Beige 🤍" },
-  { url: "/hermes-noir.jpg",   model: "Noir 🖤" },
-  { url: "/hermes-bleu.jpg",   model: "Bleu 🔵" },
+  { url: "/hermes-camel.jpeg",  model: "Camel 🐪" },
+  // { url: "/hermes-beige.jpeg",  model: "Beige 🤍" },
+  { url: "/hermes-noir.jpeg",   model: "Noir 🖤" },
+  { url: "/hermes-bleu.jpeg",   model: "Bleu 🔵" },
 ];
 
 // Available shoe sizes
@@ -152,7 +152,7 @@ export default function HermesPage() {
                   // Map model name to a swatch background color
                   const swatchColors: Record<string, string> = {
                     "Camel 🐪":  "bg-amber-700",
-                    "Beige 🤍":  "bg-amber-100 border-amber-300",
+                    // "Beige 🤍":  "bg-amber-100 border-amber-300",
                     "Noir 🖤":   "bg-gray-900",
                     "Bleu 🔵":  "bg-blue-600",
                   };

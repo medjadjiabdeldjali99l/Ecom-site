@@ -81,7 +81,7 @@ export default function HermesPage() {
         {/* Hero Section */}
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-forest">
-            👡✨ مولا Hermès
+            ✨👡 مولا Hermès
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             أناقة لا تُضاهى مع Hermès.. الفخامة الحقيقية بين يديكِ
@@ -251,13 +251,13 @@ export default function HermesPage() {
         </div>
 
         {/* Video Section */}
-        <VideoSales videos={HERMES_VIDEOS} />
+        {/* <VideoSales videos={HERMES_VIDEOS} /> */}
 
         {/* FAQ Section */}
-        <FAQ />
+        {/* <FAQ /> */}
 
         {/* Features Section */}
-        <UpsellContent />
+        {/* <UpsellContent /> */}
         <div className="mt-20 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="text-center space-y-3">
             <div className="w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center mx-auto">

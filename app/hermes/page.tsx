@@ -9,6 +9,7 @@ import MobileStickyCTA from "@/components/MobileStickyCTA";
 import VideoSales from "@/components/VideoSales";
 import FAQ from "@/components/FAQ";
 import UpsellContent from "@/components/UpsellContent";
+import VisualShowcase from "@/components/VisualShowcase";
 import { ProductImage, CartItem } from "@/types/types";
 import { Star } from "lucide-react";
 import { HERMES_PRICE } from "@/data/algeria-data";
@@ -19,6 +20,12 @@ const PRODUCT_IMAGES: ProductImage[] = [
   // { url: "/hermes-beige.jpeg",  model: "Beige 🤍" },
   { url: "/hermes-noir.jpeg",   model: "Noir 🖤" },
   { url: "/hermes-bleu.jpeg",   model: "Bleu 🔵" },
+];
+const PRODUCT_IMAGES_AFFICHE: ProductImage[] = [
+  { url: "/black_site.jpeg",  model: "Camel 🐪" },
+  // { url: "/hermes-beige.jpeg",  model: "Beige 🤍" },
+  { url: "/bl_site.jpeg",   model: "Noir 🖤" },
+  { url: "/brrown_site.jpeg",   model: "Bleu 🔵" },
 ];
 
 // Available shoe sizes
@@ -249,6 +256,9 @@ export default function HermesPage() {
             />
           </div>
         </div>
+
+        {/* Visual Showcase Section */}
+        <VisualShowcase images={PRODUCT_IMAGES_AFFICHE} />
 
         {/* Video Section */}
         {/* <VideoSales videos={HERMES_VIDEOS} /> */}

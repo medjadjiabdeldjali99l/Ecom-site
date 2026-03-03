@@ -29,7 +29,7 @@ const PRODUCT_IMAGES_AFFICHE: ProductImage[] = [
 ];
 
 // Available shoe sizes
-const POINTURES = ["36", "37", "38", "39", "40", "41"];
+const POINTURES = ["36", "37", "38", "39", "40"];
 
 const HERMES_VIDEOS = [
   {

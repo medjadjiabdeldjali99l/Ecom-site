@@ -81,7 +81,7 @@ export default function HermesPage() {
         {/* Hero Section */}
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-forest">
-            ✨👡 مولا Hermès
+            ✨👡 بليغة Hermès
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             أناقة لا تُضاهى مع Hermès.. الفخامة الحقيقية بين يديكِ

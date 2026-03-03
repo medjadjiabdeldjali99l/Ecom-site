@@ -119,7 +119,7 @@ export default function VisualShowcase({ images }: VisualShowcaseProps) {
         {/* Mobile Scroll Indicator or stacked helper text */}
         <div className="mt-12 text-center md:hidden">
            <div className="inline-flex items-center gap-2 text-gray-500 animate-pulse">
-              <span>Scroll d'avant en arrière</span>
+              <span>Scroll d&apos;avant en arrière</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>

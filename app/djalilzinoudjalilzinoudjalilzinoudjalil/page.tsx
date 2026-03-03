@@ -91,6 +91,7 @@ async function OrdersTable() {
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Téléphone</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Localisation</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Produit</th>
+              <th className="px-6 py-4 text-sm font-semibold text-gray-600">Pointure</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Méthode</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Total</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Statut</th>
@@ -119,6 +120,9 @@ async function OrdersTable() {
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">
                   {order.product_model || 'Standard'}
+                </td>
+                <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                  {order.pointure || '-'}
                 </td>
                 <td className="px-6 py-4">
                   <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-md ${

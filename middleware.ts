@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 //  🚫  BANNED IPs — Ajoute / retire des IPs ici
 // ══════════════════════════════════════════════════════════
 const BANNED_IPS: string[] = [
-  '129.45.70.81', // ← Remplace par la vraie IP du spammeur
+  '', // ← Remplace par la vraie IP du spammeur
 ]
 
 function getClientIP(request: NextRequest): string {

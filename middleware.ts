@@ -24,9 +24,10 @@ export function middleware(request: NextRequest) {
     console.warn(`🚫 [MIDDLEWARE] Accès bloqué pour l'IP bannie : ${clientIP} — ${request.method} ${request.nextUrl.pathname}`)
 
     return new NextResponse(
-      JSON.stringify({
-        error: "nbi3333 locale ou roh nik mokkkkkkkkk yadek f zebi ya 9a7ba ya wlid kalitouss. 😎",
-      }),
+
+      `<h1 style="color:red; font-family:sans-serif; text-align:center; margin-top:100px;">
+     nbi3333 locale ou roh nik mokkkkkkkkk yadek f zebi ya 9a7ba ya wlid kalitouss.😎
+   </h1>`,
       {
         status: 403,
         headers: {

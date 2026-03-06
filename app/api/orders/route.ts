@@ -4,6 +4,12 @@ import { createClient as createServerClient } from '@/lib/supabase/server'
 import { CreateOrderData } from '@/types/database.types'
 
 export async function POST(request: NextRequest) {
+  // 🔍 IP Logging — utile pour traquer les prochains spammeurs
+  const clientIP =
+    (request.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() ||
+    'unknown'
+  console.log(`📬 [ORDER POST] Nouvelle tentative de soumission — IP: ${clientIP} — ${new Date().toISOString()}`)
+
   try {
     const body: CreateOrderData = await request.json()
 

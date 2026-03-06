@@ -16,8 +16,10 @@ import { HERMES_PRICE } from "@/data/algeria-data";
 
 // Product images — 4 colorways
 const PRODUCT_IMAGES: ProductImage[] = [
+  { url: "/bligha-u-noir.jpg",  model: "noir" },
+  { url: "/bligha-u-camel.jpg",  model: "camel" },
+  { url: "/bligha-u-balcnhe.jpg",  model: "blanche 🤍" },
   { url: "/hermes-camel.jpeg",  model: "Camel 🐪" },
-  // { url: "/hermes-beige.jpeg",  model: "Beige 🤍" },
   { url: "/hermes-noir.jpeg",   model: "Noir 🖤" },
   { url: "/hermes-bleu.jpeg",   model: "Bleu 🔵" },
 ];
@@ -29,7 +31,7 @@ const PRODUCT_IMAGES_AFFICHE: ProductImage[] = [
 ];
 
 // Available shoe sizes
-const POINTURES = ["36", "37", "38", "39", "40"];
+const POINTURES = ["37", "38", "39", "40"];
 
 const HERMES_VIDEOS = [
   {
@@ -159,8 +161,10 @@ export default function HermesPage() {
                   // Map model name to a swatch background color
                   const swatchColors: Record<string, string> = {
                     "Camel 🐪":  "bg-amber-700",
+                    "camel":  "bg-amber-600",
                     // "Beige 🤍":  "bg-amber-100 border-amber-300",
                     "Noir 🖤":   "bg-gray-900",
+                    "noir":   "bg-gray-800",
                     "Bleu 🔵":  "bg-blue-600",
                   };
                   return (
@@ -209,13 +213,13 @@ export default function HermesPage() {
                   <p className="text-gray-700">
                     Vous cherchez une mule qui allie luxe, confort et élégance ? Nos mules Hermès ne sont
                     pas juste des chaussures, c&apos;est une déclaration de style. Disponibles en 4 coloris
-                    et 6 pointures (36 à 41), elles subliment chaque tenue.
+                    et 6 pointures (37 à 40), elles subliment chaque tenue.
                   </p>
                   <ul className="space-y-2 text-gray-700 list-disc list-inside">
                     <li><strong>Élégance intemporelle :</strong> Dessin iconique qui traverse les tendances.</li>
                     <li><strong>Confort premium :</strong> Semelle souple, port agréable toute la journée.</li>
                     <li><strong>4 Coloris :</strong> Camel, Beige, Noir, Bleu — pour toutes les occasions.</li>
-                    <li><strong>Pointures 36–41 :</strong> Disponible dans toutes les tailles.</li>
+                    <li><strong>Pointures 37–40 :</strong> Disponible dans toutes les tailles.</li>
                   </ul>
                 </div>
 
@@ -229,13 +233,13 @@ export default function HermesPage() {
                   </p>
                   <p className="text-gray-700">
                     هل تبحثين عن حذاء يجمع بين الفخامة والراحة والأناقة؟ مولا Hermès ليست مجرد حذاء، بل هي
-                    إعلان عن أسلوبكِ. متوفرة في 4 ألوان ومقاسات من 36 إلى 41، تُضيف لمسة من الرقي لكل إطلالة.
+                    إعلان عن أسلوبكِ. متوفرة في 4 ألوان ومقاسات من 37 إلى 40، تُضيف لمسة من الرقي لكل إطلالة.
                   </p>
                   <ul className="space-y-2 text-gray-700">
                     <li><strong>أناقة لا تفنى:</strong> تصميم أيقوني يتخطى صيحات الموضة.</li>
                     <li><strong>راحة فائقة:</strong> نعل مرن ومريح طوال اليوم.</li>
                     <li><strong>4 ألوان:</strong> كاميل، بيج، أسود، أزرق — لكل مناسبة.</li>
-                    <li><strong>مقاسات 36 – 41:</strong> متوفرة بجميع المقاسات.</li>
+                    <li><strong>مقاسات 37 – 40:</strong> متوفرة بجميع المقاسات.</li>
                   </ul>
                   <p className="text-forest font-semibold text-lg">
                     اختاري مقاسكِ ولونكِ الآن واطلبي!

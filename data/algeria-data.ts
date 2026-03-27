@@ -308,6 +308,7 @@ export const ICE_ROLLER_PRICE = Number(process.env.NEXT_PUBLIC_ICE_ROLLER_PRICE)
 export const LIGHT_ROOM_PRICE = Number(process.env.NEXT_PUBLIC_LIGHT_ROOM_PRICE) || 3000;
 export const DJADJO_PRICE = Number(process.env.NEXT_PUBLIC_DJADJO_PRICE) || 4500;
 export const HERMES_PRICE = Number(process.env.NEXT_PUBLIC_HERMES_PRICE) || 1800;
+export const PACK_COFFEE_PRICE = Number(process.env.NEXT_PUBLIC_PACK_COFFEE_PRICE) || 2900;
 
 
 

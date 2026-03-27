@@ -11,24 +11,50 @@ import FAQ from "@/components/FAQ";
 import UpsellContent from "@/components/UpsellContent";
 import { ProductImage, CartItem } from "@/types/types";
 import { Plus, Minus, ShoppingBag, Star } from "lucide-react";
-import { LIGHT_ROOM_PRICE } from "@/data/algeria-data";
+import { PACK_COFFEE_PRICE } from "@/data/algeria-data";
 
+// Product images with models - PACK COFFEE PRODUCTS
 const PRODUCT_IMAGES: ProductImage[] = [
-  { url: "/lightromme1.jpg", model: "Noir 🖤" },
-  { url: "/lightromme2.jpg", model: "Noir 🖤" },
-  { url: "/lightromme3.jpg", model: "Noir 🖤" },
-  { url: "/lightromme4.jpg", model: "Noir 🖤" },
+  { url: "/lightromme1.jpg", model: "Modèle Noir 🖤" },
+  { url: "/lightromme2.jpg", model: "Modèle Noire 🖤" },
+  { url: "/lightromme3.jpg", model: "Modèle Noire 🖤" },
+  { url: "/lightromme4.jpg", model: "Modèle Noire 🖤" },
+  // { url: "/lightromme5.jpg", model: "Modèle Jaune 🟡" },
 ];
 
+const PACK_COFFEE_VIDEOS = [
+  {
+    title: "العرض الأول: Hook 🎥",
+    description: "من وجه متعب وباهت إلى إشراقة فورية باستخدام الثلج. سحر في 5 ثوانٍ!",
+    videoUrl: "/video/IMG_7088.webm",
+    duration: "51s"
+  },
+  {
+    title: "طريقة الاستخدام: Tutorial 💡",
+    description: "افتحي القالب، مرريه بلطف، واستمتعي بالانتعاش. بسيط وفعال.",
+    videoUrl: "/video/IMG_7078.MP4",
+    duration: "47s"
+  },
+];
 
-
-export default function LightRoomPage() {
+export default function PackCoffeePage() {
   const [selectedModel, setSelectedModel] = useState(PRODUCT_IMAGES[0].model);
-  const [cartItems, setCartItems] = useState<CartItem[]>([{ model: "sign led galaxy light 🖤", quantity: 1 }]);
-  // const [toastVisible, setToastVisible] = useState(false);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-
+  const handleModelSelect = (model: string) => {
+    setSelectedModel(model);
+    setCartItems(prev => {
+      const exists = prev.find(item => item.model === model);
+      if (exists) {
+        return prev.filter(item => item.model !== model);
+      }
+      setToastMessage("Produit ajouté au panier");
+      setToastVisible(true);
+      return [...prev, { model, quantity: 1 }];
+    });
+  };
 
   const updateQuantity = (model: string, delta: number) => {
     setCartItems(prev => prev.map(item => {
@@ -58,7 +84,7 @@ export default function LightRoomPage() {
         {/* Price and Rating */}
         <div className="flex items-center justify-center gap-6 mb-12 -mt-8">
            <p className="text-4xl font-bold text-forest font-serif">
-             {LIGHT_ROOM_PRICE} DA
+             {PACK_COFFEE_PRICE} DA
            </p>
            <div className="flex items-center gap-1 text-yellow-400">
              {[1, 2, 3, 4, 5].map((_, i) => (
@@ -73,12 +99,9 @@ export default function LightRoomPage() {
           <div id="product" className="lg:sticky lg:top-24 h-fit">
             <ImageGallery 
               images={PRODUCT_IMAGES} 
-              // selectedModels={cartItems.map(i => i.model)}
-              onModelSelect={(model) => setSelectedModel(model)}
+              selectedModels={cartItems.map(i => i.model)}
+              onModelSelect={handleModelSelect}
             />
-
-            {/* ── Color / Couleur reminder ── */}
-
             
             {/* Product Description */}
             <div className="mt-8 bg-white rounded-xl p-6 shadow-elegant">
@@ -96,7 +119,7 @@ export default function LightRoomPage() {
                   </p>
                   
                   <ul className="space-y-2 text-gray-700 list-disc list-inside">
-                    <li><strong>Sculpter le visage :</strong> Accentue les pommettes et lifte le visage naturellement.</li>
+                    <li><strong>Sculpter le visage :</strong> Accentue les pommettes et lifte le visage naturally.</li>
                     <li><strong>Traiter les cernes :</strong> Réduit efficacement les poches sous les yeux.</li>
                     <li><strong>Économie intelligente :</strong> Achetez le moule une fois et utilisez-le indéfiniment avec vos propres recettes.</li>
                     <li><strong>Silicone médical :</strong> Sûr pour la peau and facile à tenir (ne gèle pas vos mains).</li>
@@ -136,14 +159,14 @@ export default function LightRoomPage() {
             <OrderForm 
               cartItems={cartItems} 
               onUpdateQuantity={updateQuantity}
-              productPrice={LIGHT_ROOM_PRICE}
+              productPrice={PACK_COFFEE_PRICE}
               lang="ar"
             />
           </div>
         </div>
 
         {/* Video Ideas Section */}
-        {/* <VideoSales videos={LIGHT_ROOM_VIDEOS} /> */}
+        {/* <VideoSales videos={PACK_COFFEE_VIDEOS} /> */}
 
         {/* FAQ Section */}
         {/* <FAQ /> */}
@@ -197,11 +220,11 @@ export default function LightRoomPage() {
       </footer>
 
       {/* Toast Notification */}
-      {/* <Toast 
+      <Toast 
         message={toastMessage}
         isVisible={toastVisible}
         onClose={() => setToastVisible(false)}
-      /> */}
+      />
 
       <MobileStickyCTA />
     </div>

@@ -15,10 +15,10 @@ import { LIGHT_ROOM_PRICE } from "@/data/algeria-data";
 
 // Product images with models - LIGHT ROOM PRODUCTS
 const PRODUCT_IMAGES: ProductImage[] = [
-  { url: "/lightromme1.jpg", model: "Modèle Vert 🟢" },
-  { url: "/lightromme2.jpg", model: "Modèle Bleu 🔵" },
+  { url: "/lightromme1.jpg", model: "Modèle Noir 🖤" },
+  { url: "/lightromme2.jpg", model: "Modèle Noire 🖤" },
   { url: "/lightromme3.jpg", model: "Modèle Noire 🖤" },
-  { url: "/lightromme4.jpg", model: "Modèle Violet 🟣" },
+  { url: "/lightromme4.jpg", model: "Modèle Noire 🖤" },
   // { url: "/lightromme5.jpg", model: "Modèle Jaune 🟡" },
 ];
 

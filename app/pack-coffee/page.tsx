@@ -136,10 +136,10 @@ export default function PackCoffeePage() {
                         onChange={() => handlePackSelect(pack.id)}
                       />
 
-                      {/* Small Images */}
-                      <div className="flex -space-x-4 overflow-hidden">
-                        {pack.images.slice(0, 2).map((img, i) => (
-                          <div key={i} className="relative w-12 h-12 rounded-lg border-2 border-white overflow-hidden shadow-sm">
+                      {/* Small Images Scrollable */}
+                      <div className="flex gap-2 overflow-x-auto py-1 max-w-[120px] md:max-w-[150px] scrollbar-hide shrink-0">
+                        {pack.images.map((img, i) => (
+                          <div key={i} className="relative w-12 h-12 rounded-lg border border-gray-100 overflow-hidden shadow-sm shrink-0">
                             <img src={img} alt="" className="object-cover w-full h-full" />
                           </div>
                         ))}
@@ -179,26 +179,60 @@ export default function PackCoffeePage() {
                   <ul className="space-y-2 text-gray-700 list-disc list-inside">
                     <li><strong>Sculpter le visage :</strong> Accentue les pommettes et lifte le visage naturally.</li>
                     <li><strong>Traiter les cernes :</strong> Réduit efficacement les poches sous les yeux.</li>
-                    <li><strong>Économie intelligente :</strong> Achetez le moule une fois et utilisez-le indéfiniment avec vos propres recettes.</li>
-                    <li><strong>Silicone médical :</strong> Sûr pour la peau and facile à tenir (ne gèle pas vos mains).</li>
-                  </ul>
-                </div> */}
-
                 {/* Arabic Description */}
-                <div className="space-y-4 text-right leading-relaxed" dir="rtl">
+                <div className="space-y-6 text-right leading-relaxed" dir="rtl">
                   <h3 className="text-2xl font-serif font-bold text-forest mb-4">
-                    لماذا تختار عروض Pack Coffee؟
+                    ☕ مجموعات القهوة المختارة — قهوتك، اختيارك، أسلوبك!
                   </h3>
                   
                   <p className="text-gray-700">
-                    وفر أكثر مع باقاتنا المختارة بعناية. سواء كنت تريد تجربة المنتج أو التوفير للعائلة، لدينا العرض المناسب لك.
+                    لأن كل محب للقهوة له طقوسه الخاصة، صممنا لك 3 باقات احترافية تمنحك الجودة العالية والراحة التي تبحث عنها، سواء كنت في البيت، المكتب، أو في رحلاتك.
                   </p>
+
+                  <div className="space-y-4">
+                    <div className="border-r-4 border-forest pr-4">
+                      <h4 className="font-bold text-lg text-forest">1️⃣ الباك الشامل (The Ultimate Pack)</h4>
+                      <p className="text-sm font-semibold text-gray-900">&quot;التجربة الكاملة لعشاق التفاصيل&quot;</p>
+                      <p className="text-gray-600 italic mt-1">إذا كنت تريد التحكم الكامل في كوبك من الألف إلى الياء، فهذا الباك لك.</p>
+                      <ul className="text-sm mt-2 space-y-1">
+                        <li>• <strong>مطحنة يدوية احترافية:</strong> لطحن البن طازجاً والحفاظ على الزيوت العطرية.</li>
+                        <li>• <strong>كبسولات قابلة لإعادة الاستخدام:</strong> اقتصادية، صديقة للبيئة.</li>
+                        <li>• <strong>قارورة حرارية (Gourde):</strong> تحافظ على حرارة قهوتك لساعات طويلة.</li>
+                      </ul>
+                    </div>
+
+                    <div className="border-r-4 border-forest pr-4">
+                      <h4 className="font-bold text-lg text-forest">2️⃣ باك &quot;النكهة الطازجة&quot; (مطحنة + كبسولات)</h4>
+                      <p className="text-sm font-semibold text-gray-900">&quot;للأشخاص الذين يقدّرون المذاق الأصلي&quot;</p>
+                      <ul className="text-sm mt-2 space-y-1">
+                        <li>• <strong>المحتويات:</strong> مطحنة يدوية + كبسولات قابلة لإعادة الاستعمال.</li>
+                        <li>• <strong>الميزة:</strong> وداعاً للكبسولات الجاهزة غالية الثمن. الآن أنت تختار البن وتطحنه.</li>
+                      </ul>
+                    </div>
+
+                    <div className="border-r-4 border-forest pr-4">
+                      <h4 className="font-bold text-lg text-forest">3️⃣ باك &quot;القهوة أثناء التنقل&quot; (كبسولات + قارورة)</h4>
+                      <p className="text-sm font-semibold text-gray-900">&quot;للعمليين وأصحاب الجدول المزدحم&quot;</p>
+                      <ul className="text-sm mt-2 space-y-1">
+                        <li>• <strong>المحتويات:</strong> كبسولات قابلة لإعادة الاستعمال + قارورة حرارية (Gourde).</li>
+                        <li>• <strong>الميزة:</strong> حضّر كبسولتك المفضلة بسرعة وانطلق ليومك بقهوة ساخنة.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 border-t border-gray-100">
+                    <h4 className="font-bold text-lg text-forest mb-3">✨ مميزات منتجاتنا:</h4>
+                    <ul className="space-y-2 text-gray-700">
+                      <li><strong>💰 اقتصادية:</strong> توفر عليك شراء الكبسولات التقليدية المكلفة.</li>
+                      <li><strong>🌱 صديقة للبيئة:</strong> تقلل من نفايات البلاستيك بشكل كبير.</li>
+                      <li><strong>🏆 جودة عالية:</strong> مواد متينة مصممة للاستخدام اليومي الطويل.</li>
+                      <li><strong>🎨 حرية الاختيار:</strong> جرب أنواع بن مختلفة ومستويات طحن متنوعة.</li>
+                    </ul>
+                  </div>
                   
-                  <ul className="space-y-2 text-gray-700">
-                    <li><strong>💰 توفير حقيقي:</strong> أسعار مخفضة عند شراء المجموعات</li>
-                    <li><strong>🎁 هدايا حصرية:</strong> متوفرة في العرض الثاني</li>
-                    <li><strong>⚡ توصيل سريع:</strong> لكل الولايات</li>
-                  </ul>
+                  <p className="text-forest font-bold text-lg mt-6">
+                    🚀 اختر الباك الذي يشبهك الآن، واستمتع بقهوتك كما لم تفعل من قبل!
+                  </p>
                 </div>
               </div>
             </div>

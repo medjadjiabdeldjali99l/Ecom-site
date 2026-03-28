@@ -171,8 +171,12 @@ async function OrdersTable({ productFilter }: { productFilter?: string }) {
   )
 }
 
-export default function DashboardPage({ searchParams }: { searchParams: { product?: string } }) {
-  const productFilter = searchParams.product
+export default async function DashboardPage({ 
+  searchParams 
+}: { 
+  searchParams: Promise<{ product?: string }> 
+}) {
+  const { product: productFilter } = await searchParams;
 
   return (
     <div className="min-h-screen bg-gray-50/50 p-4 md:p-8">

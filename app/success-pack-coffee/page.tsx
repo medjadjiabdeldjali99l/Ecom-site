@@ -21,16 +21,21 @@ export default function SuccessPackCoffeePage() {
     const data = sessionStorage.getItem("orderData");
     if (data) {
       setOrderData(JSON.parse(data));
-    } else {
-      // Redirect to home if no order data
-      router.push("/");
     }
   }, [router]);
 
   if (!orderData) {
     return (
-      <div className="min-h-screen bg-cream flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-forest border-t-transparent"></div>
+      <div className="min-h-screen bg-cream flex flex-col items-center justify-center p-4">
+        <div id="pixel-pack-coffee" className="hidden"></div>
+        <h1 className="text-2xl font-serif font-bold text-forest mb-4">Page de Confirmation (Pack Coffee)</h1>
+        <p className="text-gray-600 mb-8">Aucune donnée de commande trouvée.</p>
+        <button
+          onClick={() => router.push("/")}
+          className="bg-forest text-white px-6 py-2 rounded-lg"
+        >
+          Retour à l&apos;accueil
+        </button>
       </div>
     );
   }

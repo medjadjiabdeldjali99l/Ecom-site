@@ -15,55 +15,54 @@ import { PACK_COFFEE_PRICE } from "@/data/algeria-data";
 
 // Product images with models - PACK COFFEE PRODUCTS
 const PRODUCT_IMAGES: ProductImage[] = [
-  { url: "/lightromme1.jpg", model: "Modèle Noir 🖤" },
-  { url: "/lightromme2.jpg", model: "Modèle Noire 🖤" },
-  { url: "/lightromme3.jpg", model: "Modèle Noire 🖤" },
-  { url: "/lightromme4.jpg", model: "Modèle Noire 🖤" },
-  // { url: "/lightromme5.jpg", model: "Modèle Jaune 🟡" },
+  { url: "/vacum1.png", model: "Noir 🖤" },
+  { url: "/moulain.png", model: "Noir 🖤" },
+  { url: "/cap.jpeg", model: "Noir 🖤" },
+  { url: "/photo pack 3.jpeg", model: "Noir 🖤" },
 ];
 
-const PACK_COFFEE_VIDEOS = [
+const COFFEE_PACKS = [
   {
-    title: "العرض الأول: Hook 🎥",
-    description: "من وجه متعب وباهت إلى إشراقة فورية باستخدام الثلج. سحر في 5 ثوانٍ!",
-    videoUrl: "/video/IMG_7088.webm",
-    duration: "51s"
+    id: "pack-1",
+    title: "العرض 1: كبسولة قابلة لإعادة الشحن + مطحنة قهوة",
+    price: 2900,
+    images: ["/cap.jpeg", "/moulain.png"],
+    description: "نظافة وانتعاش مضاعف (قطعتين)"
   },
   {
-    title: "طريقة الاستخدام: Tutorial 💡",
-    description: "افتحي القالب، مرريه بلطف، واستمتعي بالانتعاش. بسيط وفعال.",
-    videoUrl: "/video/IMG_7078.MP4",
-    duration: "47s"
+    id: "pack-2",
+    title: "العرض 2: كبسولة قابلة لإعادة الشحن + قارورة حرارية مع 3 أكواب",
+    price: 2900,
+    images: ["/cap.jpeg", "/vacum1.png"],
+    description: "قطعتين مع هدية خاصة"
   },
+  {
+    id: "pack-3",
+    title: "العرض 3:كبسولة قابلة لإعادة الشحن + قارورة حرارية مع 3 أكواب + مطحنة قهوة",
+    price: 4300,
+    images: ["/cap.jpeg","/moulain.png","/vacum1.png"],
+    description: "3 قطع للتوفير الأقصى"
+  }
 ];
+
 
 export default function PackCoffeePage() {
   const [selectedModel, setSelectedModel] = useState(PRODUCT_IMAGES[0].model);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [toastVisible, setToastVisible] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
+  const [selectedPackId, setSelectedPackId] = useState(COFFEE_PACKS[0].id);
+  
+  const selectedPack = COFFEE_PACKS.find(p => p.id === selectedPackId) || COFFEE_PACKS[0];
+  
+  // Transform the selected pack into a CartItem for the OrderForm
+  const cartItems: CartItem[] = [
+    { model: selectedPack.title, quantity: 1 }
+  ];
 
-  const handleModelSelect = (model: string) => {
-    setSelectedModel(model);
-    setCartItems(prev => {
-      const exists = prev.find(item => item.model === model);
-      if (exists) {
-        return prev.filter(item => item.model !== model);
-      }
-      setToastMessage("Produit ajouté au panier");
-      setToastVisible(true);
-      return [...prev, { model, quantity: 1 }];
-    });
+  const handlePackSelect = (packId: string) => {
+    setSelectedPackId(packId);
   };
 
   const updateQuantity = (model: string, delta: number) => {
-    setCartItems(prev => prev.map(item => {
-      if (item.model === model) {
-        const newQuantity = Math.max(0, item.quantity + delta);
-        return { ...item, quantity: newQuantity };
-      }
-      return item;
-    }).filter(item => item.quantity > 0)); 
+    // Quantity is fixed for packs in this UI, but we keep the function for OrderForm compatibility
   };
 
   return (
@@ -74,10 +73,10 @@ export default function PackCoffeePage() {
         {/* Hero Section */}
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-forest">
-           🌙 دير أجواء خيالية وانت في دارك
+           🔥 عروض حصرية  Pack Coffee
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            خليك تعيش جو سينما وانت في بيتك
+            إختر باقتك المفضلة واستمتع بالتوفير
           </p>
         </div>
 
@@ -99,9 +98,68 @@ export default function PackCoffeePage() {
           <div id="product" className="lg:sticky lg:top-24 h-fit">
             <ImageGallery 
               images={PRODUCT_IMAGES} 
-              selectedModels={cartItems.map(i => i.model)}
-              onModelSelect={handleModelSelect}
+              selectedModels={[]} // No model selection highlights
+              onModelSelect={(model) => setSelectedModel(model)} // Only changes visual view
             />
+
+            {/* Pack Selection UI */}
+            <div className="mt-8 space-y-4">
+              <h3 className="text-2xl font-serif font-bold text-forest text-right mb-6" dir="rtl">
+                إختر العرض المناسب لك:
+              </h3>
+              
+              <div className="space-y-3">
+                {COFFEE_PACKS.map((pack) => (
+                  <label 
+                    key={pack.id}
+                    className={`
+                      relative flex items-center justify-between p-4 rounded-2xl border-2 cursor-pointer transition-all duration-300
+                      ${selectedPackId === pack.id 
+                        ? "border-forest bg-forest/5 shadow-md ring-1 ring-forest" 
+                        : "border-gray-200 bg-white hover:border-forest/30"}
+                    `}
+                    dir="rtl"
+                  >
+                    <div className="flex items-center gap-4">
+                      {/* Checkbox/Radio */}
+                      <div className={`
+                        w-6 h-6 rounded-full border-2 flex items-center justify-center
+                        ${selectedPackId === pack.id ? "border-forest bg-forest" : "border-gray-300"}
+                      `}>
+                        {selectedPackId === pack.id && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
+                      </div>
+                      <input 
+                        type="radio" 
+                        name="pack-selection" 
+                        className="hidden" 
+                        checked={selectedPackId === pack.id}
+                        onChange={() => handlePackSelect(pack.id)}
+                      />
+
+                      {/* Small Images */}
+                      <div className="flex -space-x-4 overflow-hidden">
+                        {pack.images.slice(0, 2).map((img, i) => (
+                          <div key={i} className="relative w-12 h-12 rounded-lg border-2 border-white overflow-hidden shadow-sm">
+                            <img src={img} alt="" className="object-cover w-full h-full" />
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Title and Description */}
+                      <div className="text-right">
+                        <p className="font-bold text-gray-900">{pack.title}</p>
+                        <p className="text-xs text-gray-500">{pack.description}</p>
+                      </div>
+                    </div>
+
+                    {/* Price */}
+                    <div className="text-left font-bold text-forest text-lg">
+                      {pack.price} DA
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
             
             {/* Product Description */}
             <div className="mt-8 bg-white rounded-xl p-6 shadow-elegant">
@@ -129,25 +187,17 @@ export default function PackCoffeePage() {
                 {/* Arabic Description */}
                 <div className="space-y-4 text-right leading-relaxed" dir="rtl">
                   <h3 className="text-2xl font-serif font-bold text-forest mb-4">
-                    علاش تحتاج هاد الجهاز في غرفتك؟
+                    لماذا تختار عروض Pack Coffee؟
                   </h3>
                   
                   <p className="text-gray-700">
-                    ترجع تعبان من الخدمة؟ غرفتك مملة وما فيها حتى جو؟
-                    <br />
-                    هاد الجهاز ماشي غير لامب… راهو تجربة كاملة تعيشها.
-                  </p>
-                  
-                  <p className="text-gray-700">
-                    في ثواني، يبدل لك الجو كامل ويخليك تحس براحة نفسية، رومانسية، وهدوء ما شفتوش من قبل.
+                    وفر أكثر مع باقاتنا المختارة بعناية. سواء كنت تريد تجربة المنتج أو التوفير للعائلة، لدينا العرض المناسب لك.
                   </p>
                   
                   <ul className="space-y-2 text-gray-700">
-                    <li><strong>✨ جو رومانسي:</strong> مثالي للأزواج ولا لحظات خاصة</li>
-                    <li><strong>🌈 ألوان متعددة:</strong> بدّل الجو كيما تحب</li>
-                    <li><strong>🎶 بلوتوث:</strong> شغّل الموسيقى تاعك بسهولة</li>
-                    <li><strong>🛌 راحة نفسية:</strong> ينقص الستريس ويساعدك ترقد مليح</li>
-                    <li><strong>🎮 ريموت:</strong> تحكم كامل بلا ما تنوض</li>
+                    <li><strong>💰 توفير حقيقي:</strong> أسعار مخفضة عند شراء المجموعات</li>
+                    <li><strong>🎁 هدايا حصرية:</strong> متوفرة في العرض الثاني</li>
+                    <li><strong>⚡ توصيل سريع:</strong> لكل الولايات</li>
                   </ul>
                 </div>
               </div>
@@ -159,7 +209,7 @@ export default function PackCoffeePage() {
             <OrderForm 
               cartItems={cartItems} 
               onUpdateQuantity={updateQuantity}
-              productPrice={PACK_COFFEE_PRICE}
+              productPrice={selectedPack.price}
               lang="ar"
               successUrl="/success-pack-coffee"
             />
@@ -219,13 +269,6 @@ export default function PackCoffeePage() {
           </p>
         </div>
       </footer>
-
-      {/* Toast Notification */}
-      <Toast 
-        message={toastMessage}
-        isVisible={toastVisible}
-        onClose={() => setToastVisible(false)}
-      />
 
       <MobileStickyCTA />
     </div>

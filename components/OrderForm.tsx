@@ -14,6 +14,7 @@ interface OrderFormProps {
   lang?: "fr" | "ar"; // Language prop
   pointure?: string; // Selected shoe size (for products with sizes)
   successUrl?: string; // Custom success page URL
+  productName?: string; // Tracking product name
 }
 
 const TRANSLATIONS = {
@@ -92,7 +93,8 @@ export default function OrderForm({
   productPrice, 
   lang = "fr", 
   pointure,
-  successUrl = "/success"
+  successUrl = "/success",
+  productName
 }: OrderFormProps) {
   const t = TRANSLATIONS[lang];
   const isRTL = lang === "ar";
@@ -195,6 +197,7 @@ export default function OrderForm({
         product_price: totalPrice - deliveryCost,
         total_price: totalPrice,
         product_model: modelString,
+        product_name: productName || "Standard",
         pointure: pointure || undefined,
       };
 

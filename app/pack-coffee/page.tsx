@@ -246,6 +246,7 @@ export default function PackCoffeePage() {
               productPrice={selectedPack.price}
               lang="ar"
               successUrl="/success-pack-coffee"
+              productName="Pack Coffee"
             />
           </div>
         </div>

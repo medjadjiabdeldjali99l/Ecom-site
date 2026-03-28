@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/client'
+import { createClient as createAdminClient } from '@supabase/supabase-js'
 import { UpdateOrderData } from '@/types/database.types'
 
 export async function GET(
@@ -8,9 +8,12 @@ export async function GET(
 ) {
   try {
     const { id } = await params
-    const supabase = createClient()
+    const supabaseAdmin = createAdminClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('orders')
       .select('*')
       .eq('id', id)
@@ -42,9 +45,12 @@ export async function PATCH(
     const { id } = await params
     const body: UpdateOrderData = await request.json()
 
-    const supabase = createClient()
+    const supabaseAdmin = createAdminClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('orders')
       .update(body)
       .eq('id', id)

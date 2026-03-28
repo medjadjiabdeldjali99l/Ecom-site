@@ -3,6 +3,8 @@ import { Order } from '@/types/database.types'
 import { Suspense } from 'react'
 import RefreshButton from '@/components/RefreshButton'
 import { ShoppingBag, TrendingUp, Users } from 'lucide-react'
+import ProductFilter from '@/components/ProductFilter'
+import OrderStatusActions from '@/components/OrderStatusActions'
 
 export const dynamic = 'force-dynamic'
 
@@ -36,16 +38,23 @@ function LoadingSkeleton() {
   )
 }
 
-async function OrdersTable() {
+async function OrdersTable({ productFilter }: { productFilter?: string }) {
   const supabase = createAdminClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   )
 
-  const { data: orders, error } = await supabase
+  let query = supabase
     .from('orders')
     .select('*')
+    .neq('status', 'cancelled')
     .order('created_at', { ascending: false })
+
+  if (productFilter && productFilter !== 'all') {
+    query = query.eq('product_name', productFilter)
+  }
+
+  const { data: orders, error } = await query
 
   if (error) {
     return (
@@ -56,8 +65,8 @@ async function OrdersTable() {
   }
 
   const totalOrders = orders?.length || 0
-  const totalRevenue = orders?.reduce((sum, order) => sum + (order.total_price || 0), 0) || 0
-  const uniqueClients = new Set(orders?.map(o => o.phone)).size
+  const totalRevenue = orders?.reduce((sum: number, order: Order) => sum + (order.total_price || 0), 0) || 0
+  const uniqueClients = new Set(orders?.map((o: Order) => o.phone)).size
 
   if (!orders || orders.length === 0) {
     return (
@@ -91,10 +100,12 @@ async function OrdersTable() {
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Téléphone</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Localisation</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Produit</th>
+              <th className="px-6 py-4 text-sm font-semibold text-gray-600">Variante</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Pointure</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Méthode</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Total</th>
               <th className="px-6 py-4 text-sm font-semibold text-gray-600">Statut</th>
+              <th className="px-6 py-4 text-sm font-semibold text-gray-600 text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50">
@@ -119,7 +130,10 @@ async function OrdersTable() {
                   <div className="text-xs text-gray-400">{order.commune}</div>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">
-                  {order.product_model || 'Standard'}
+                  <span className="font-semibold text-forest">{order.product_name || 'Standard'}</span>
+                </td>
+                <td className="px-6 py-4 text-sm text-gray-600 text-xs text-balance">
+                  {order.product_model || '-'}
                 </td>
                 <td className="px-6 py-4 text-sm font-medium text-gray-900">
                   {order.pointure || '-'}
@@ -135,14 +149,18 @@ async function OrdersTable() {
                   <span className="text-sm font-bold text-gray-900">{order.total_price} DA</span>
                 </td>
                 <td className="px-6 py-4">
-                  <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
+                  <span className={`capitalize inline-flex px-2 py-1 text-[10px] font-bold rounded-full ${
                     order.status === 'delivered' ? 'bg-green-100 text-green-700' :
                     order.status === 'cancelled' ? 'bg-red-100 text-red-700' :
+                    order.status === 'confirmed' ? 'bg-teal-100 text-teal-700' :
                     order.status === 'shipped' ? 'bg-blue-100 text-blue-700' :
                     'bg-yellow-100 text-yellow-700'
                   }`}>
                     {order.status}
                   </span>
+                </td>
+                <td className="px-6 py-4 text-right">
+                  <OrderStatusActions orderId={order.id} currentStatus={order.status} />
                 </td>
               </tr>
             ))}
@@ -153,7 +171,9 @@ async function OrdersTable() {
   )
 }
 
-export default function DashboardPage() {
+export default function DashboardPage({ searchParams }: { searchParams: { product?: string } }) {
+  const productFilter = searchParams.product
+
   return (
     <div className="min-h-screen bg-gray-50/50 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
@@ -162,16 +182,19 @@ export default function DashboardPage() {
             <h1 className="text-2xl font-bold text-gray-900">Dashboard Commandes</h1>
             <p className="text-gray-500 mt-1">Gérez vos commandes clients en temps réel</p>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm text-sm font-medium text-gray-600">
-              Djalil Dashboard
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <ProductFilter />
+            <div className="flex items-center gap-3">
+              <div className="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm text-sm font-medium text-gray-600">
+                Djalil Dashboard
+              </div>
+              <RefreshButton />
             </div>
-            <RefreshButton />
           </div>
         </header>
 
-        <Suspense fallback={<LoadingSkeleton />}>
-          <OrdersTable />
+        <Suspense key={productFilter || 'all'} fallback={<LoadingSkeleton />}>
+          <OrdersTable productFilter={productFilter} />
         </Suspense>
       </div>
     </div>

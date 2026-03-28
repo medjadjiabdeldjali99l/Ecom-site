@@ -139,6 +139,7 @@ export default function LightRoomPage() {
               productPrice={LIGHT_ROOM_PRICE}
               lang="ar"
               successUrl="/success-lightromm"
+              productName="Light Room"
             />
           </div>
         </div>

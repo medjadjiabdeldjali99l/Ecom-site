@@ -257,6 +257,7 @@ export default function HermesPage() {
               productPrice={HERMES_PRICE}
               lang="ar"
               pointure={selectedPointure}
+              productName="Hermes"
             />
           </div>
         </div>

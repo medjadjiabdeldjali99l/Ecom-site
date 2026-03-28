@@ -161,6 +161,7 @@ export default function PackCoffeePage() {
               onUpdateQuantity={updateQuantity}
               productPrice={PACK_COFFEE_PRICE}
               lang="ar"
+              successUrl="/success-pack-coffee"
             />
           </div>
         </div>

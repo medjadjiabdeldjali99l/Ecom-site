@@ -138,6 +138,7 @@ export default function LightRoomPage() {
               onUpdateQuantity={updateQuantity}
               productPrice={LIGHT_ROOM_PRICE}
               lang="ar"
+              successUrl="/success-lightromm"
             />
           </div>
         </div>

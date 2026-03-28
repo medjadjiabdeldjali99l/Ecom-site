@@ -13,6 +13,7 @@ interface OrderFormProps {
   productPrice?: number; // Dynamic product price for this page
   lang?: "fr" | "ar"; // Language prop
   pointure?: string; // Selected shoe size (for products with sizes)
+  successUrl?: string; // Custom success page URL
 }
 
 const TRANSLATIONS = {
@@ -84,7 +85,15 @@ const TRANSLATIONS = {
   }
 };
 
-export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuantity, productPrice, lang = "fr", pointure }: OrderFormProps) {
+export default function OrderForm({ 
+  selectedModel, 
+  cartItems = [], 
+  onUpdateQuantity, 
+  productPrice, 
+  lang = "fr", 
+  pointure,
+  successUrl = "/success"
+}: OrderFormProps) {
   const t = TRANSLATIONS[lang];
   const isRTL = lang === "ar";
 
@@ -207,7 +216,7 @@ export default function OrderForm({ selectedModel, cartItems = [], onUpdateQuant
         pointure: pointure || undefined,
       }));
 
-      router.push('/success');
+      router.push(successUrl);
     } catch (error) {
       console.error('Error:', error);
       alert('Une erreur est survenue.');

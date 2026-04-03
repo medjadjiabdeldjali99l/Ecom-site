@@ -22,7 +22,7 @@ const PRODUCT_IMAGES: ProductImage[] = [
   { url: "/AKPII-5.png", model: "AKPII ✨" },
 ];
 
-const FEEDBACK_IMAGES = ["/feedback-1.png", "/feedback-2.png", "/feedback-3.png", "/feedback-4.png"];
+const FEEDBACK_IMAGES = ["/feedback-11.png", "/feedback-22.png", "/feedback-33.png", "/feedback-44.png"];
 
 export default function AkpiiPage() {
   const [selectedModel, setSelectedModel] = useState(PRODUCT_IMAGES[0].model);

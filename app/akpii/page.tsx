@@ -106,24 +106,33 @@ export default function AkpiiPage() {
                   </section>
 
                   <section className="bg-forest/5 p-5 rounded-xl border border-forest/10 space-y-4">
-                    <h4 className="text-xl font-bold text-forest">طريقة التحضير والاستخدام:</h4>
-                    <p className="text-sm text-gray-600 mb-2">للحصول على أفضل النتائج، اتبعي هذه الخطوات البسيطة لتحويل البذور إلى كريم طبيعي فعال:</p>
-                    <div className="grid gap-3">
-                      <div className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-forest text-white rounded-full flex items-center justify-center text-xs font-bold mt-1">1</span>
-                        <p><strong>التحميص:</strong> ضعي البذور في مقلاة على نار هادئة لدقائق بسيطة حتى تظهر رائحتها الزكية.</p>
+                    <h4 className="text-xl font-bold text-forest underline font-serif">طرق الاستخدام:</h4>
+                    
+                    <div className="space-y-6">
+                      {/* Method 1: Cream */}
+                      <div className="space-y-3">
+                        <h5 className="font-bold text-forest-dark flex items-center gap-2">
+                          <span>1️⃣</span> الطريقة الأولى: الدهن الموضعي (كريم)
+                        </h5>
+                        <p className="text-sm text-gray-600">للنحت الخارجي وشد الجلد ومكافحة الترهلات:</p>
+                        <div className="grid gap-2 pr-4 border-r-2 border-forest/20">
+                          <p className="text-sm">🔹 <strong>التحميص والطحن:</strong> حمصي البذور قليلاً لتسهيل خروج الزيوت ثم اطحنيها جيداً.</p>
+                          <p className="text-sm">🔹 <strong>المزج:</strong> اخلطي المسحوق مع زبدة الشيا الخام أو زيت الحلبة للحصول على قوام كريمي.</p>
+                          <p className="text-sm">🔹 <strong>التطبيق:</strong> دلكي المنطقة بحركات دائرية لمدة 5 دقائق يومياً قبل النوم لضمان الامتصاص.</p>
+                        </div>
                       </div>
-                      <div className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-forest text-white rounded-full flex items-center justify-center text-xs font-bold mt-1">2</span>
-                        <p><strong>الطحن:</strong> اطحني البذور جيداً حتى تحصلي على قوام ناعم جداً.</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-forest text-white rounded-full flex items-center justify-center text-xs font-bold mt-1">3</span>
-                        <p><strong>المزج:</strong> اخلطي المسحوق مع كمية متساوية من زبدة الشيا الخام أو زيت الحلبة للحصول على قوام كريمي.</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="flex-shrink-0 w-6 h-6 bg-forest text-white rounded-full flex items-center justify-center text-xs font-bold mt-1">4</span>
-                        <p><strong>التطبيق:</strong> دلكي المنطقة المطلوبة بحركات دائرية لمدة 5 دقائق يومياً قبل النوم لضمان أقصى امتصاص للمكونات الفعالة.</p>
+
+                      {/* Method 2: Drinking with Milk */}
+                      <div className="pt-4 border-t border-forest/10 space-y-3">
+                        <h5 className="font-bold text-forest-dark flex items-center gap-2">
+                          <span>2️⃣</span> الطريقة الثانية: الشرب مع الحليب (بودرة)
+                        </h5>
+                        <p className="text-sm text-gray-600">لتحفيز النتائج داخلياً وتفعيل الهرمونات:</p>
+                        <div className="bg-white/60 p-4 rounded-xl border border-forest/10 shadow-sm">
+                          <p className="text-gray-700 leading-relaxed">
+                            قومي بطحن بذور الأكبي الإفريقية حتى تصبح بودرة ناعمة جداً، ثم أضيفي ملعقة صغيرة من المسحوق إلى كوب من الحليب الدافئ واشربيه <strong>بعد كل وجبة</strong>. هذه الطريقة تضمن تزويد الجسم بالمغذيات اللازمة لتغيير القوام من الداخل وبسرعة أكبر.
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </section>

@@ -18,6 +18,7 @@ const PRODUCT_IMAGES: ProductImage[] = [
   { url: "/AKPI-1.png", model: "AKPII ✨" },
   { url: "/AKPI-2.png", model: "AKPII ✨" },
   { url: "/AKPI-4.png", model: "AKPII ✨" },
+  { url: "/AKPII-5.png", model: "AKPII ✨" },
 ];
 
 export default function AkpiiPage() {

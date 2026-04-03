@@ -12,6 +12,7 @@ import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { ProductImage, CartItem } from "@/types/types";
 import { Star } from "lucide-react";
 import { AKPII_PRICE } from "@/data/algeria-data";
+import CustomerFeedback from "@/components/CustomerFeedback";
 
 const PRODUCT_IMAGES: ProductImage[] = [
   { url: "/AKPI-3.png", model: "AKPII ✨" },
@@ -20,6 +21,8 @@ const PRODUCT_IMAGES: ProductImage[] = [
   { url: "/AKPI-4.png", model: "AKPII ✨" },
   { url: "/AKPII-5.png", model: "AKPII ✨" },
 ];
+
+const FEEDBACK_IMAGES = ["/feedback-1.png", "/feedback-2.png", "/feedback-3.png", "/feedback-4.png"];
 
 export default function AkpiiPage() {
   const [selectedModel, setSelectedModel] = useState(PRODUCT_IMAGES[0].model);
@@ -154,6 +157,8 @@ export default function AkpiiPage() {
             />
           </div>
         </div>
+        
+        <CustomerFeedback images={FEEDBACK_IMAGES} />
 
         {/* Features Section */}
         <div className="mt-20 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">

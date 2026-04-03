@@ -29,6 +29,7 @@ export default function ProductFilter() {
         <option value="Light Room">Light Room</option>
         <option value="Pack Coffee">Pack Coffee</option>
         <option value="Hermes">Hermes</option>
+        <option value="Akpii">Akpii</option>
       </select>
     </div>
   );

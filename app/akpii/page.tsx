@@ -46,7 +46,7 @@ export default function AkpiiPage() {
         {/* Hero Section */}
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-forest leading-tight">
-            ✨ مؤخرة منحوتة بدون عمليات.. اكتشفي سر بذور الأكبي الإفريقية! 🍑
+            ✨ تحفيز طبيعي لمستقبلات الأنوثة 🍑
           </h1>
           <p className="text-2xl font-bold text-forest-dark max-w-2xl mx-auto">
             فعّلي هرمونات الأنوثة طبيعياً!

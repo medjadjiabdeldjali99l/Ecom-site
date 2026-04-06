@@ -316,9 +316,9 @@ export const AKPII_PRICE = Number(process.env.NEXT_PUBLIC_AKPII_PRICE) || 1500;
 // Delivery pricing per wilaya
 export const DELIVERY_PRICING: DeliveryPricing[] = [
   // Major cities - Lower delivery costs
-  { wilayaCode: "16", homeDelivery: 600, bureauPickup: 400 }, // Alger
-  { wilayaCode: "31", homeDelivery: 700, bureauPickup: 500 }, // Oran
-  { wilayaCode: "25", homeDelivery: 650, bureauPickup: 450 }, // Constantine
+  { wilayaCode: "16", homeDelivery: 500, bureauPickup: 400 }, // Alger
+  { wilayaCode: "31", homeDelivery: 700, bureauPickup: 600 }, // Oran
+  { wilayaCode: "25", homeDelivery: 700, bureauPickup: 600 }, // Constantine
   { wilayaCode: "09", homeDelivery: 600, bureauPickup: 400 }, // Blida
   { wilayaCode: "35", homeDelivery: 650, bureauPickup: 450 }, // Boumerdès
   
@@ -326,13 +326,13 @@ export const DELIVERY_PRICING: DeliveryPricing[] = [
   { wilayaCode: "02", homeDelivery: 800, bureauPickup: 600 }, // Chlef
   { wilayaCode: "06", homeDelivery: 850, bureauPickup: 650 }, // Béjaïa
   { wilayaCode: "10", homeDelivery: 800, bureauPickup: 600 }, // Bouira
-  { wilayaCode: "13", homeDelivery: 900, bureauPickup: 700 }, // Tlemcen
-  { wilayaCode: "15", homeDelivery: 850, bureauPickup: 650 }, // Tizi Ouzou
+  { wilayaCode: "13", homeDelivery: 700, bureauPickup: 700 }, // Tlemcen
+  { wilayaCode: "15", homeDelivery: 650, bureauPickup: 650 }, // Tizi Ouzou
   { wilayaCode: "18", homeDelivery: 850, bureauPickup: 650 }, // Jijel
   { wilayaCode: "19", homeDelivery: 800, bureauPickup: 600 }, // Sétif
   { wilayaCode: "21", homeDelivery: 850, bureauPickup: 650 }, // Skikda
   { wilayaCode: "23", homeDelivery: 850, bureauPickup: 650 }, // Annaba
-  { wilayaCode: "26", homeDelivery: 750, bureauPickup: 550 }, // Médéa
+  { wilayaCode: "26", homeDelivery: 650, bureauPickup: 550 }, // Médéa
   { wilayaCode: "27", homeDelivery: 800, bureauPickup: 600 }, // Mostaganem
   { wilayaCode: "36", homeDelivery: 900, bureauPickup: 700 }, // El Tarf
   { wilayaCode: "42", homeDelivery: 700, bureauPickup: 500 }, // Tipaza
@@ -346,15 +346,15 @@ export const DELIVERY_PRICING: DeliveryPricing[] = [
   { wilayaCode: "43", homeDelivery: 850, bureauPickup: 650 }, // Mila
   
   // Southern wilayas - Higher costs
-  { wilayaCode: "01", homeDelivery: 1500, bureauPickup: 1200 }, // Adrar
+  { wilayaCode: "01", homeDelivery: 1500, bureauPickup: 1300 }, // Adrar
   { wilayaCode: "03", homeDelivery: 1200, bureauPickup: 900 }, // Laghouat
   { wilayaCode: "07", homeDelivery: 1100, bureauPickup: 850 }, // Biskra
   { wilayaCode: "08", homeDelivery: 1400, bureauPickup: 1100 }, // Béchar
-  { wilayaCode: "11", homeDelivery: 2000, bureauPickup: 1700 }, // Tamanrasset
+  { wilayaCode: "11", homeDelivery: 1650, bureauPickup: 1300 }, // Tamanrasset
   { wilayaCode: "30", homeDelivery: 1300, bureauPickup: 1000 }, // Ouargla
   { wilayaCode: "32", homeDelivery: 1400, bureauPickup: 1100 }, // El Bayadh
-  { wilayaCode: "33", homeDelivery: 2200, bureauPickup: 1900 }, // Illizi
-  { wilayaCode: "37", homeDelivery: 2500, bureauPickup: 2200 }, // Tindouf
+  { wilayaCode: "33", homeDelivery: 1700, bureauPickup: 1800 }, // Illizi
+  { wilayaCode: "37", homeDelivery: 1700, bureauPickup: 1500 }, // Tindouf
   { wilayaCode: "39", homeDelivery: 1200, bureauPickup: 900 }, // El Oued
   { wilayaCode: "47", homeDelivery: 1300, bureauPickup: 1000 }, // Ghardaïa
 ];
